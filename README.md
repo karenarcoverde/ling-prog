@@ -1,2 +1,2 @@
 # ling-prog
-Práticas da matéria Linguagens de Programação.
+Práticas da disciplina Linguagens de Programação.
