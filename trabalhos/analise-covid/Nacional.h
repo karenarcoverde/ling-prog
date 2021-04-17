@@ -11,6 +11,12 @@ using namespace std;
 
 class Nacional{
     public:
+        void setMaiorPorcentagemRisco (double);
+        string getMaiorPorcentagemRisco ();
+
+        void setMenorPorcentagemRisco (double);
+        string getMenorPorcentagemRisco ();
+
 
     private:
         // Vector para armazenamento de estados 

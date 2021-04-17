@@ -6,6 +6,7 @@
 #include <vector>
 
 
+
 using namespace std;
 
 class Estadual{
@@ -13,14 +14,17 @@ class Estadual{
         void setSiglaEstado(string);
         string getSiglaEstado ();
 
-        void setMortesDiarias (vector);
-        int getMortesDiarias ();
+        void setMortesDiarias (vector <int>);
+        vector <int> getMortesDiarias ();
 
+        float getMediaMovel (int);
+        
+        float getPorcentagemRisco (int);
 
-        void setMediaMovel (vector, int);
-        double getMediaMovel ();
+        int getNumeroDeObitos ();
+       
 
     private:
         string siglaEstado;
-        vector <int> dias;
+        vector <int> mortesEstado_dias;
 };
