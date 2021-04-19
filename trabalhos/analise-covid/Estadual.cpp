@@ -4,15 +4,15 @@
 #include <iostream>
 #include <string>
 
-#include "nacional.h"
+#include "Nacional.h"
 
 using namespace std;
 
-void Estadual::setSiglaEstado (string siglaEstado_escolhido){
+void Estadual::setNomeEstado (string siglaEstado_escolhido){
     siglaEstado = siglaEstado_escolhido;
 }
 
-string Estadual::getSiglaEstado (){
+string Estadual::getNomeEstado (){
     return siglaEstado;
 }
 
@@ -38,8 +38,8 @@ float Estadual::getMediaMovel (int qtdDias){
 }
 
 float Estadual::getPorcentagemRisco (int qtdDias){
-    float porcentagem_risco_estado;
-    int soma_mortes_atual;
+    float porcentagem_risco_estado = 0;
+    int soma_mortes_atual = 0;
 
     for (int indice_dias = 1; indice_dias < qtdDias +1; indice_dias)
         soma_mortes_atual += mortesEstado_dias[indice_dias];

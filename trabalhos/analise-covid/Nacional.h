@@ -11,6 +11,13 @@ using namespace std;
 
 class Nacional{
     public:
+        void insereEstado (Estadual &);
+
+        void mostraNumeroDeObitosBrasil ();
+        void mostraNumeroDeObitosEstados ();
+        //void mostraMediaMovelBrasil ();
+        void mostraMediaMovelEstados ();
+
         void setMaiorPorcentagemRisco (double);
         string getMaiorPorcentagemRisco ();
 

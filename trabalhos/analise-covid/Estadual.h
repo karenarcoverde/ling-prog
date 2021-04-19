@@ -11,8 +11,8 @@ using namespace std;
 
 class Estadual{
     public:
-        void setSiglaEstado(string);
-        string getSiglaEstado ();
+        void setNomeEstado(string);
+        string getNomeEstado ();
 
         void setMortesDiarias (vector <int>);
         vector <int> getMortesDiarias ();
