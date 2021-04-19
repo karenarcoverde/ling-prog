@@ -1,4 +1,4 @@
-EXECS = covidAnalise
+EXECS = covid
 				
 
 main: main.cpp estadual.cpp nacional.cpp

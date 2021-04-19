@@ -15,8 +15,8 @@ class Nacional{
 
         void mostraNumeroDeObitosBrasil ();
         void mostraNumeroDeObitosEstados ();
-        //void mostraMediaMovelBrasil ();
-        void mostraMediaMovelEstados ();
+        void mostraMediaMovelBrasil (int);
+        void mostraMediaMovelEstados (int);
 
         void setMaiorPorcentagemRisco (double);
         string getMaiorPorcentagemRisco ();
