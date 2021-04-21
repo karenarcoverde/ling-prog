@@ -15,7 +15,8 @@ int main(){
    unsigned int qtdDias = 7;
    int opcao_menu;
 
-   vector <int> RJ = {30, 40, 35, 38, 39, 25, 31, 24, 29, 36, 36, 35, 29, 21};
+   // Rio de Janeiro
+    vector <int> RJ = {30, 40, 35, 38, 39, 25, 31, 24, 29, 36, 36, 35, 29, 21};
 
     estado.setMortesDiarias (RJ);
     estado.setNomeEstado ("Rio de Janeiro");
@@ -58,6 +59,69 @@ int main(){
 
     Brasil.insereEstado (estado);
 
+    //Paraná
+
+    vector <int> PR = {7, 15, 23, 8, 10, 13, 19, 17, 13, 21, 12, 19, 17, 8};
+
+    estado.setMortesDiarias(PR);
+    estado.setNomeEstado ("Parana");
+
+    Brasil.insereEstado (estado);
+
+    //Rio Grande do Sul
+
+    vector <int> RS = {10, 20, 30, 15, 25, 5, 13, 9, 23, 19, 11, 26, 15, 19};
+
+    estado.setMortesDiarias (RS);
+    estado.setNomeEstado ("Rio Grande do Sul");
+
+    Brasil.insereEstado (estado);
+
+    //Mato Grosso
+
+    vector <int> MT = {40, 50, 60, 54, 56, 49, 47, 44, 61, 51, 49, 48, 57, 45};
+
+    estado.setMortesDiarias (MT);
+    estado.setNomeEstado ("Mato Grosso");
+
+    Brasil.insereEstado (estado);
+
+    //Mato Grosso do Sul
+
+    vector <int> MS = {30, 40, 35, 25, 39, 27, 32, 33, 23, 41, 37, 28, 48, 23};
+
+    estado.setMortesDiarias (MS);
+    estado.setNomeEstado ("Mato Grosso do Sul");
+
+    Brasil.insereEstado (estado);
+
+    //Goias
+
+    vector <int> GO = {33, 45, 47, 39, 31, 38, 43, 49, 35, 34, 44, 48, 32, 40};
+
+    estado.setMortesDiarias(GO);
+    estado.setNomeEstado ("Goias");
+
+    Brasil.insereEstado (estado);
+
+    //Acre
+
+    vector <int> AC = {21, 20, 39, 35, 23, 27, 31, 38, 27, 25, 32, 29, 30, 24};
+
+    estado.setMortesDiarias (AC);
+    estado.setNomeEstado ("Acre");
+
+    Brasil.insereEstado (estado);
+
+    //Ceara
+
+    vector <int> CE = {57, 31, 53, 49, 37, 51, 54, 30, 44, 47, 48, 35, 51, 25};
+
+    estado.setMortesDiarias (CE);
+    estado.setNomeEstado ("Ceara");
+
+    Brasil.insereEstado (estado);
+
     //Alagoas
 
     vector <int> AL = {1, 2, 3, 4, 5, 6, 7, 300, 400, 500, 600, 700, 800, 900};
@@ -66,6 +130,34 @@ int main(){
     estado.setNomeEstado ("Alagoas");
 
     Brasil.insereEstado (estado);
+
+    //Rondonia
+
+    vector <int> RO = {100, 200, 300, 400, 500, 600, 700, 8, 9, 10, 11, 12 , 13, 14};
+
+    estado.setMortesDiarias (RO);
+    estado.setNomeEstado("Rondonia");
+
+    Brasil.insereEstado (estado);
+
+    //Tocantins
+    
+    vector <int> TO = {2000, 4000, 6000, 8000, 10000, 12000, 14000, 1, 3, 5, 7, 9, 11, 13, 15};
+
+    estado.setMortesDiarias (TO);
+    estado.setNomeEstado ("Tocantins");
+    Brasil.insereEstado (estado);
+
+    //Roraima 
+
+    vector <int> RR = {200, 200, 200, 200, 200, 200, 200, 1, 2, 3, 4, 5, 6, 7};
+
+    estado.setMortesDiarias (RR);
+    estado.setNomeEstado ("Roraima");
+    
+    Brasil.insereEstado (estado);
+
+    //Sergipe
 
     vector <int> SE = {200, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 200, 200, 200};
 
@@ -82,7 +174,6 @@ int main(){
     estado.setNomeEstado ("Bahia");
 
     Brasil.insereEstado (estado);
-
 
 
    /*

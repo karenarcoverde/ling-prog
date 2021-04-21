@@ -25,7 +25,7 @@ void Nacional::mostraNumeroDeObitosBrasil (){
 void Nacional::mostraNumeroDeObitosEstados (){
 
     for (unsigned int indice_o_estado = 0; indice_o_estado < estados.size(); indice_o_estado++)
-        cout << "O numero de obitos no " << estados[indice_o_estado].getNomeEstado() << "eh: " << estados[indice_o_estado].getNumeroDeObitos() << endl;
+        cout << "O numero de obitos no " << estados[indice_o_estado].getNomeEstado() << " eh: " << estados[indice_o_estado].getNumeroDeObitos() << endl;
 
 }
 
@@ -133,18 +133,18 @@ void Nacional::mostraMaiorPorcentagemRisco (int qtdDias){
 
 
 void Nacional::mostraMenorPorcentagemRisco (int qtdDias){
-    float parametro_menor = 0;
+    float parametro_menor;
 
-
+    parametro_menor = estados[0].getPorcentagemRisco (qtdDias);
     for (unsigned int indice_p = 0; indice_p < estados.size(); indice_p++)
     {
-        if (estados[indice_p].getPorcentagemRisco (qtdDias) > parametro_menor)
+        if (estados[indice_p].getPorcentagemRisco (qtdDias) < parametro_menor)
             parametro_menor = estados[indice_p].getPorcentagemRisco (qtdDias); 
     }
 
 
-    cout  << "------- Estados com menor baixa: --------" << endl;
-    for (unsigned int indice_p = 0; indice_p > estados.size(); indice_p++)
+    cout  << "------- Estados com maior baixa: --------" << endl;
+    for (unsigned int indice_p = 0; indice_p < estados.size(); indice_p++)
     {
          if (estados[indice_p].getPorcentagemRisco (qtdDias) == parametro_menor)
              cout << estados[indice_p].getNomeEstado() << endl;
