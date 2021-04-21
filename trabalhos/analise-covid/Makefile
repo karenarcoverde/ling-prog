@@ -2,7 +2,7 @@ EXECS = covid
 				
 
 main: main.cpp estadual.cpp nacional.cpp
-	g++ -Wall main.cpp estadual.cpp nacional.cpp -o covid 
+	g++ -Wall analise-covid.cpp estadual.cpp nacional.cpp -o covid 
 	
 
 clean:

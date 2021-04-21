@@ -14,6 +14,7 @@ int main(){
    Estadual estado;
    string siglaEstado;
    Nacional Brasil;
+   const int qtdDias = 10;
 
    // RIO DE JANEIRO
    vector <int> RJ = {20, 10, 50, 60, 80, 70, 90, 35, 40, 77};
