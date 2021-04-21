@@ -32,7 +32,7 @@ void Nacional::mostraNumeroDeObitosEstados (){
 void Nacional::mostraMediaMovelEstados (int qtdDias){
 
     for (unsigned int indice_o_estado = 0; indice_o_estado < estados.size(); indice_o_estado++)
-        cout << "A media movel nos ultimos " << qtdDias << "dias no: " << estados[indice_o_estado].getNomeEstado() << "eh: " << estados[indice_o_estado].getMediaMovel(qtdDias) << endl;
+        cout << "A media movel nos ultimos " << qtdDias << " dias no " << estados[indice_o_estado].getNomeEstado() << " eh: " << estados[indice_o_estado].getMediaMovel(qtdDias) << endl;
 }
 
 void Nacional::mostraMediaMovelBrasil (int qtdDias){
@@ -44,7 +44,7 @@ void Nacional::mostraMediaMovelBrasil (int qtdDias){
 
     media_movel_Brasil = (soma_mortes/qtdDias);
 
-    cout << "A media movel dos ultimos " << qtdDias << "dias no Brasil eh: " << media_movel_Brasil << endl;
+    cout << "A media movel dos ultimos " << qtdDias << " dias no Brasil eh: " << media_movel_Brasil << endl;
 
 }
 
