@@ -40,7 +40,7 @@ void Nacional::mostraMediaMovelBrasil (int qtdDias){
     float media_movel_Brasil = 0;
 
     for (unsigned int indice_estados = 0; indice_estados < estados.size();indice_estados++)
-        soma_mortes += estados[indice_estados].getNumeroDeObitos();
+        soma_mortes += estados[indice_estados].getNumeroDeObitosqtdDias(qtdDias);
 
     media_movel_Brasil = (soma_mortes/qtdDias);
 

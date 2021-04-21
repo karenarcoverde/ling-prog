@@ -80,3 +80,12 @@ int Estadual::getNumeroDeObitosDiasEspecificoAtual (int qtdDias){
 
     return soma_mortes_total_atual;
 }
+
+int Estadual::getNumeroDeObitosqtdDias(int qtdDias){
+    int soma_mortes_total = 0;
+
+    for (int indice_obitos = 0; indice_obitos < qtdDias; indice_obitos++)
+        soma_mortes_total += mortesEstado_dias[indice_obitos];
+
+    return soma_mortes_total;
+}

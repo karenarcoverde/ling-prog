@@ -24,6 +24,8 @@ class Estadual{
 
         int getNumeroDeObitosDiasEspecificoAnterior (int);
         int getNumeroDeObitosDiasEspecificoAtual (int);
+
+        int getNumeroDeObitosqtdDias(int);
        
 
     private:
