@@ -16,7 +16,7 @@ string Estadual::getNomeEstado (){
     return siglaEstado;
 }
 
-void Estadual::setMortesDiarias (vector int mortesEstado){
+void Estadual::setMortesDiarias (vector <int> mortesEstado){
     mortesEstado_dias = mortesEstado;
 }
 
@@ -27,6 +27,7 @@ vector <int> Estadual::getMortesDiarias (){
 
 float Estadual::getMediaMovel (int qtdDias){
     int soma_mortes = 0;
+    int media_movel_dias = 0;
 
     for (int indice = 0; indice < qtdDias; indice++)
         soma_mortes += mortesEstado_dias[indice];
@@ -40,6 +41,7 @@ float Estadual::getMediaMovel (int qtdDias){
 float Estadual::getPorcentagemRisco (int qtdDias){
     float porcentagem_risco_estado = 0;
     int soma_mortes_atual = 0;
+    float media_movel_mortes_atual = 0;
 
     for (int indice_dias = 1; indice_dias < qtdDias +1; indice_dias++)
         soma_mortes_atual += mortesEstado_dias[indice_dias];
@@ -55,8 +57,8 @@ float Estadual::getPorcentagemRisco (int qtdDias){
 int Estadual::getNumeroDeObitos (){
     int soma_mortes_total = 0;
 
-    for (int indice_obitos = 0; indice_obitos < mortesEstado_dias.size(); indice_obitos++)
-        soma_mortes_total += mortesEstado_dias[indice_obitos]
+    for (unsigned int indice_obitos = 0; indice_obitos < mortesEstado_dias.size(); indice_obitos++)
+        soma_mortes_total += mortesEstado_dias[indice_obitos];
 
     return soma_mortes_total;
 }
@@ -65,7 +67,7 @@ int Estadual::getNumeroDeObitosDiasEspecificoAnterior (int qtdDias){
     int soma_mortes_total_anterior = 0;
 
     for (int indice_obitos = 1; indice_obitos < qtdDias+1; indice_obitos++)
-        soma_mortes_total_anterior += mortesEstado_dias[indice_obitos]
+        soma_mortes_total_anterior += mortesEstado_dias[indice_obitos];
 
     return soma_mortes_total_anterior;
 }
@@ -74,7 +76,7 @@ int Estadual::getNumeroDeObitosDiasEspecificoAtual (int qtdDias){
     int soma_mortes_total_atual = 0;
 
     for (int indice_obitos = 0; indice_obitos < qtdDias; indice_obitos++)
-        soma_mortes_total_atual += mortesEstado_dias[indice_obitos]
+        soma_mortes_total_atual += mortesEstado_dias[indice_obitos];
 
     return soma_mortes_total_atual;
 }

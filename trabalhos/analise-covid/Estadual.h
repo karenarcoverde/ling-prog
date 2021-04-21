@@ -6,7 +6,6 @@
 #include <vector>
 
 
-
 using namespace std;
 
 class Estadual{
@@ -23,7 +22,8 @@ class Estadual{
 
         int getNumeroDeObitos ();
 
-        int getNumeroDeObitosDiaEspecifico (int);
+        int getNumeroDeObitosDiasEspecificoAnterior (int);
+        int getNumeroDeObitosDiasEspecificoAtual (int);
        
 
     private:

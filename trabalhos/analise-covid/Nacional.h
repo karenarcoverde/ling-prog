@@ -27,10 +27,5 @@ class Nacional{
 
 
     private:
-        // Vector para armazenamento de estados 
         vector <Estadual> estados;
-
-
-
-
 };
