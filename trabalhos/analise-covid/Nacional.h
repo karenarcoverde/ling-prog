@@ -18,11 +18,12 @@ class Nacional{
         void mostraMediaMovelBrasil (int);
         void mostraMediaMovelEstados (int);
 
-        void setMaiorPorcentagemRisco (double);
-        string getMaiorPorcentagemRisco ();
+        void mostraEstabilidadeEstados(int);
+        void mostraEstabilidadeBrasil(int);
 
-        void setMenorPorcentagemRisco (double);
-        string getMenorPorcentagemRisco ();
+        
+        void getMaiorPorcentagemRisco (int);
+        void getMenorPorcentagemRisco (int);
 
 
     private:

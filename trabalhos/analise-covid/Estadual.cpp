@@ -20,7 +20,7 @@ void Estadual::setMortesDiarias (vector int mortesEstado){
     mortesEstado_dias = mortesEstado;
 }
 
-void Estadual::getMortesDiarias (){
+vector <int> Estadual::getMortesDiarias (){
     return mortesEstado_dias;
 }
 
@@ -41,7 +41,7 @@ float Estadual::getPorcentagemRisco (int qtdDias){
     float porcentagem_risco_estado = 0;
     int soma_mortes_atual = 0;
 
-    for (int indice_dias = 1; indice_dias < qtdDias +1; indice_dias)
+    for (int indice_dias = 1; indice_dias < qtdDias +1; indice_dias++)
         soma_mortes_atual += mortesEstado_dias[indice_dias];
     
     media_movel_mortes_atual = (soma_mortes_atual/qtdDias);
@@ -61,4 +61,12 @@ int Estadual::getNumeroDeObitos (){
     return soma_mortes_total;
 }
 
+int Estadual::getNumeroDeObitosDiasEspecifico (int qtdDias){
+    int soma_mortes_total = 0;
+
+    for (int indice_obitos = 0; indice_obitos < qtdDias; indice_obitos++)
+        soma_mortes_total += mortesEstado_dias[indice_obitos]
+
+    return soma_mortes_total;
+}
 

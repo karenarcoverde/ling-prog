@@ -22,6 +22,8 @@ class Estadual{
         float getPorcentagemRisco (int);
 
         int getNumeroDeObitos ();
+
+        int getNumeroDeObitosDiaEspecifico (int);
        
 
     private:
