@@ -129,7 +129,7 @@ void mostraMaiorPorcentagemRisco (int qtdDias){
 
 
 
-void mostraMenorPorcentagemRisco (int){
+void mostraMenorPorcentagemRisco (int qtdDias){
     parametro_menor = 0;
 
 
@@ -146,8 +146,5 @@ void mostraMenorPorcentagemRisco (int){
          if (estado[indice_p].getPorcentagemRisco (qtdDias) = parametro_menor)
              cout << estados[indice_p].getNomeEstado() << endl;
     }
-
-
-
 }
 
