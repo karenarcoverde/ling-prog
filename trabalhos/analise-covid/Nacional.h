@@ -22,8 +22,8 @@ class Nacional{
         void mostraEstabilidadeBrasil(int);
 
         
-        void getMaiorPorcentagemRisco (int);
-        void getMenorPorcentagemRisco (int);
+        void mostraMaiorPorcentagemRisco (int);
+        void mostraMenorPorcentagemRisco (int);
 
 
     private:

@@ -61,12 +61,20 @@ int Estadual::getNumeroDeObitos (){
     return soma_mortes_total;
 }
 
-int Estadual::getNumeroDeObitosDiasEspecifico (int qtdDias){
-    int soma_mortes_total = 0;
+int Estadual::getNumeroDeObitosDiasEspecificoAnterior (int qtdDias){
+    int soma_mortes_total_anterior = 0;
 
-    for (int indice_obitos = 0; indice_obitos < qtdDias; indice_obitos++)
-        soma_mortes_total += mortesEstado_dias[indice_obitos]
+    for (int indice_obitos = 1; indice_obitos < qtdDias+1; indice_obitos++)
+        soma_mortes_total_anterior += mortesEstado_dias[indice_obitos]
 
-    return soma_mortes_total;
+    return soma_mortes_total_anterior;
 }
 
+int Estadual::getNumeroDeObitosDiasEspecificoAtual (int qtdDias){
+    int soma_mortes_total_atual = 0;
+
+    for (int indice_obitos = 0; indice_obitos < qtdDias; indice_obitos++)
+        soma_mortes_total_atual += mortesEstado_dias[indice_obitos]
+
+    return soma_mortes_total_atual;
+}

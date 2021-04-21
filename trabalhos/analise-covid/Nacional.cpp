@@ -82,17 +82,72 @@ void mostraEstabilidadeEstados(int qtdDias){
 
 void Nacional::mostraEstabilidadeBrasil(int qtdDias){
 
-    float porcentagem_risco_estado = 0;
+    float porcentagem_risco_Brasil = 0;
     int soma_mortes_atual = 0;
+    int soma_mortes_anterior = 0;
 
-    for (int indice_estados = 0; indice_estados < qtdDias; indice_estados++)
-        soma_mortes_atual += estados[indice_estados].getNumeroDeObitosDiasEspecifico();
+    for (int indice_estados = 0; indice_estados < estados.size(); indice_estados++)
+        soma_mortes_anterior += estados[indice_estados].getNumeroDeObitosDiasEspecificoAnterior(qtdDias);
+
+    for (int indice_estados = 0; indice_estados < estados.size(); indice_estados++)
+        soma_mortes_atual += estados[indice_estados].getNumeroDeObitosDiasEspecificoAtual(qtdDias);
     
-    media_movel_mortes_atual = (soma_mortes_atual/qtdDias);
 
-    porcentagem_risco_Brasil = (getMediaMovel (qtdDias)/media_movel_mortes_atual);
+    porcentagem_risco_Brasil = soma_mortes_atual/soma_mortes_anterior;
    
-    return porcentagem_risco_Brasil;
+
+     if (porcentagem_risco_Brasil > limiar_alta)
+        cout << "Brasil tem risco Alto!" << endl;
+            
+
+    else if (porcentagem_risco_Brasil < limiar_baixa)
+        cout << "Brasil tem risco Baixo!" << endl;
+
+    else
+        cout << "Brasil tem risco Estavel!" << endl;
+
+}
+
+
+void mostraMaiorPorcentagemRisco (int qtdDias){
+    parametro_maior = 0;
+
+
+    for (int indice_p = 0; indice_p < estados.size(); indice_p++)
+    {
+        if (estado[indice_p].getPorcentagemRisco (qtdDias) > parametro_maior)
+            parametro_maior = estados[indice_p].getPorcentagemRisco (qtdDias); 
+    }
+
+    cout  << "------- Estados com maior alta: --------" << endl;
+    for (int indice_p = 0; indice_p < estados.size(); indice_p++)
+    {
+         if (estado[indice_p].getPorcentagemRisco (qtdDias) = parametro_maior)
+             cout << estados[indice_p].getNomeEstado() << endl;
+    }
+}
+
+
+
+void mostraMenorPorcentagemRisco (int){
+    parametro_menor = 0;
+
+
+    for (int indice_p = 0; indice_p < estados.size(); indice_p++)
+    {
+        if (estado[indice_p].getPorcentagemRisco (qtdDias) > parametro_menor)
+            parametro_menor = estados[indice_p].getPorcentagemRisco (qtdDias); 
+    }
+
+
+    cout  << "------- Estados com menor baixa: --------" << endl;
+    for (int indice_p = 0; indice_p > estados.size(); indice_p++)
+    {
+         if (estado[indice_p].getPorcentagemRisco (qtdDias) = parametro_menor)
+             cout << estados[indice_p].getNomeEstado() << endl;
+    }
+
+
 
 }
 
