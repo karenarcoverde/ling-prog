@@ -1,9 +1,20 @@
-EXECS = covid
-				
+CC = g++ 
+LD = g++
 
-main: main.cpp estadual.cpp nacional.cpp
-	g++ -Wall analise-covid.cpp estadual.cpp nacional.cpp -o covid 
-	
+CFLAGS = -Wall
+LFLAGS = -Wall
+
+MAINOBJS = analise-covid.o Estadual.o Nacional.o 
+
+MAIN = main 
+
+.cpp.o:
+	$(CC) $(CFLAGS) -c $<
+
+all: $(MAIN)
+
+main: $(MAINOBJS)
+	$(LD) $(LFLAGS) -o $@ $(MAINOBJS) -lm
 
 clean:
-	rm $(EXECS)
+	rm -f *.o $(MAIN)
