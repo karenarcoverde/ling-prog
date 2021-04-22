@@ -1,20 +1,17 @@
-CC = g++ 
+CPP = g++
+CPPFLAGS = -Wall
 LD = g++
 
-CFLAGS = -Wall
-LFLAGS = -Wall
+PROGRAM = covid
+OBJS = covid-analise.o Nacional.o Estadual.o
 
-MAINOBJS = analise-covid.o Estadual.o Nacional.o 
+all: $(PROGRAM)
 
-MAIN = main 
+$(PROGRAM): $(OBJS)
+	$(LD) $(OBJS) -o $@
 
 .cpp.o:
-	$(CC) $(CFLAGS) -c $<
-
-all: $(MAIN)
-
-main: $(MAINOBJS)
-	$(LD) $(LFLAGS) -o $@ $(MAINOBJS) -lm
+	$(CPP) $(CPPFLAGS) -c $<
 
 clean:
-	rm -f *.o $(MAIN)
+	rm -f *.o $(PROGRAM)
