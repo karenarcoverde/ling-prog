@@ -1,7 +1,7 @@
 Este programa mostra estatísticas sobre a COVID-19 nos estados e no Brasil.
 
 Instruções sobre o Menu:
-O usuário deverá escolher uma opção das citadas abaixo.
+O usuário deverá escolher uma opção das citadas abaixo. Ele poderá escolher quantas vezes quiser as opções enquanto não for escolhida a opção 8 (Sair).
 
 1. Mostrar media movel dos estados                  -> Mostra a média móvel nos últimos 9 dias dos estados contidos no programa.
 2. Mostrar media movel no Brasil                    -> Mostra a média móvel nos últimos 9 dias do Brasil.
@@ -16,4 +16,4 @@ Para compilar:
 Digite make no terminal
 
 Para executar:
-./covid no terminal
+Digite ./covid no terminal
