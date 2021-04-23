@@ -3,7 +3,7 @@ CPPFLAGS = -Wall
 LD = g++
 
 PROGRAM = covid
-OBJS = covid-analise.o Nacional.o Estadual.o
+OBJS = analise-covid.o Nacional.o Estadual.o
 
 all: $(PROGRAM)
 
