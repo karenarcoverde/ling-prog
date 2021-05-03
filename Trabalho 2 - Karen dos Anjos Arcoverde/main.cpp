@@ -16,36 +16,67 @@ int main(){
 
    Grafo grafo;
    Vertice vertice;
-
-   //Lê o arquivo e guarda cada palavra lida em um vetor de strings
+   int opcao_menu;
    fstream file;
    string nomeArquivo;
 
-   nomeArquivo = "texto.txt";
-   vector <string> conjuntoDePalavras;
+   cout << "----------------- MENU -----------------" << endl;
+   cout << "1. Mostrar a(s) palavra(s) mais utilizada(s) no texto " << endl;
+   cout << "2. Mostrar a(s) sequencia(s) de palavras de comprimento 2 mais utilizada(s) no texto " << endl;
+   cout << "3. Mostrar a(s) sequencia(s) de palavras de comprimento N mais utilizada(s) no texto " << endl;
+   cout << "4. Sair " << endl;
 
-   file.open (nomeArquivo, fstream::in);
+   
 
-   if (!file.is_open()){
-      cout << "Arquivo nao existe." << endl;
-      return; 
-   }
+   while (opcao_menu != 4)
+   {
 
-   while (file.good()){
-      string linha;
+      cin >> opcao_menu;
 
-      getline (file, linha, ' ');
-      if ((linha[linha.length()-1] == '.') || (linha[linha.length()-1] == ','))
-		linha = linha.substr(0,linha.length()-1);
+      switch (opcao_menu)
+      {
+      
+      case 1:
+         //Lê o arquivo e guarda cada palavra lida em um vetor de strings
 
-      vertice.setPalavra (linha);
-      grafo.insereVertice (vertice);
-	}
-   file.close();
+         nomeArquivo = "texto.txt";
 
+         file.open (nomeArquivo, fstream::in);
 
+         if (!file.is_open()){
+            cout << "Arquivo nao existe." << endl;
+            return; 
+         }
 
+         while (file.good()){
+            string linha;
 
+            getline (file, linha, ' ');
+            if ((linha[linha.length()-1] == '.') || (linha[linha.length()-1] == ','))
+            linha = linha.substr(0,linha.length()-1);
+
+            vertice.setPalavra (linha);
+            grafo.insereVertice (vertice);
+         }
+         file.close();
+         
+         break;
+
+      case 2:
+        
+         break;
+
+      case 3:
+      
+         break;
+
+      case 4:
+         break;
+
+      default:
+         cout << "Operacao invalida, escolha uma operacao existente" << endl;
+      }
+   }  
 
    return 0;
 }
