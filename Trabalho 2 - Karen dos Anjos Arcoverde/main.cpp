@@ -14,7 +14,9 @@ using namespace std;
 
 int main(){
 
+   Grafo grafo;
    Vertice vertice;
+
    //Lê o arquivo e guarda cada palavra lida em um vetor de strings
    fstream file;
    string nomeArquivo;
@@ -37,6 +39,7 @@ int main(){
 		linha = linha.substr(0,linha.length()-1);
 
       vertice.setPalavra (linha);
+      grafo.insereVertice (vertice);
 	}
    file.close();
 
