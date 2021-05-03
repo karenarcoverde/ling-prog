@@ -15,8 +15,13 @@ class Grafo{
         void insereVertice (Vertice &);
         void mostraMaiorPesoPalavra ();
 
+        void insereAresta (Aresta &);
+        void mostraMaiorPesoPalavraDupla ();
+        
+        void mostraMaiorPesopalavraN ();
+
 
     private:
         vector <Vertice> vertices;
-
+        vector <Aresta> arestas;
 };

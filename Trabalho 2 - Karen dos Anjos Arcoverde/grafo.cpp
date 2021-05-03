@@ -38,3 +38,40 @@ void Grafo::mostraMaiorPesoPalavra (){
             cout << vertices[indice].getPalavra() << endl;
     }
 }
+
+
+void Grafo::insereAresta (Aresta &a){
+
+    bool incluido_arestas = true;
+
+    if (arestas.size() == 0)
+        arestas.push_back (a);
+
+    else{
+        for (int indice = 0; indice < arestas.size(); indice++)
+        {
+            if (arestas[indice].getPrimeiroVertice() == a.getPrimeiroVertice() && arestas[indice].getSegundoVertice() == a.getSegundoVertice())
+                arestas[indice].setPesoAresta(); //adiciona 1 sempre que a aresta nova for igual a alguma já colocada no vetor de arestas
+                incluido_arestas = false;
+        }
+        if (incluido_arestas)
+            arestas.push_back (a);      
+    }
+}
+
+void Grafo::mostraMaiorPesoPalavraDupla (){
+
+    int maior_peso = 0;
+
+    for (int indice = 0; indice < arestas.size(); indice++)
+    {
+        if (arestas [indice].getPesoAresta() > maior_peso)
+            maior_peso = arestas[indice].getPesoAresta();
+    }
+
+    for (int indice = 0; indice < arestas.size(); indice++)
+    {
+        if (arestas[indice].getPesoAresta() == maior_peso)
+            cout << arestas[indice].getPesoAresta() << endl;
+    }
+}
