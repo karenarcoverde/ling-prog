@@ -18,7 +18,7 @@ int main(){
    Vertice vertice;
    int qtdVertices = 0;
    int primeira_palavra = 1;
-   int segunda_palavra = 0;
+   int segunda_palavra = 2;
 
    int opcao_menu;
 
@@ -42,7 +42,7 @@ int main(){
       getline (file, linha, ' ');
       if ((linha[linha.length()-1] == '.') || (linha[linha.length()-1] == ','))
          linha = linha.substr(0,linha.length()-1);
-         segunda_palavra = 1;
+         segunda_palavra = 3;
 
       if (primeira_palavra == 1)  { 
          vertice.setPalavra (linha);
@@ -51,7 +51,7 @@ int main(){
          primeira_palavra = 0;
       }
 
-      else if (segunda_palavra == 0){
+      else if (segunda_palavra == 2){
          vertice.setPalavra (linha);
          grafo.insereVertice (vertice);
          qtdVertices ++;
@@ -60,7 +60,7 @@ int main(){
          primeira_palavra = 0;
       }
 
-      else if (segunda_palavra == 1){
+      else if (segunda_palavra == 3){
          vertice.setPalavra (linha);
          grafo.insereVertice (vertice);
          qtdVertices ++;
