@@ -8,17 +8,19 @@ using namespace std;
 
 class Aresta{
     public:
-        Aresta (Vertice *, Vertice *);
+        Aresta (Vertice, Vertice);
 
         void setPesoAresta ();
         int getPesoAresta ();
 
-        Vertice *getPrimeiroVertice ();
-        Vertice *getSegundoVertice ();
+        Vertice getPrimeiroVertice ();
+        Vertice getSegundoVertice ();
+
+        string getNomePrimeiroVertice ();
+        string getNomeSegundoVertice ();
 
 
     private:
         int peso = 1;
-        Vertice *primeiroVertice, *segundoVertice; 
-        vector <string> vetorDeVertices;
+        Vertice primeiroVertice, segundoVertice; 
 };

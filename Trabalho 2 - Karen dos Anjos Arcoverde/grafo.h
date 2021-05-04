@@ -21,7 +21,7 @@ class Grafo{
         void mostraMaiorPesopalavraN ();
         
         void setTodosOsVertices (Vertice &);
-        Vertice *getVerticeEspecifico (int);
+        Vertice getVerticeEspecifico (int);
 
 
     private:

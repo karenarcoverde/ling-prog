@@ -8,8 +8,8 @@ void Grafo::setTodosOsVertices (Vertice &v_2){
     vertices_modificado.push_back(v_2);
 }
 
-Vertice *Grafo::getVerticeEspecifico (int qtdVertices){
-    return &vertices_modificado[qtdVertices];
+Vertice Grafo::getVerticeEspecifico (int qtdVertices){
+    return vertices_modificado[qtdVertices];
 }
 
 
@@ -53,7 +53,7 @@ void Grafo::mostraMaiorPesoPalavra (){
 
 void Grafo::insereAresta (Aresta &a){
 
-    bool incluido_arestas = true;
+     bool incluido_arestas = true;
 
     if (arestas.size() == 0)
         arestas.push_back (a);
@@ -61,7 +61,7 @@ void Grafo::insereAresta (Aresta &a){
     else{
         for (unsigned int indice = 0; indice < arestas.size(); indice++)
         {
-            if (arestas[indice].getPrimeiroVertice() == a.getPrimeiroVertice() && arestas[indice].getSegundoVertice() == a.getSegundoVertice()){
+            if (arestas[indice].getNomePrimeiroVertice () == a.getNomePrimeiroVertice () && arestas[indice].getNomeSegundoVertice () == a.getNomeSegundoVertice()){
                 arestas[indice].setPesoAresta(); //adiciona 1 sempre que a aresta nova for igual a alguma já colocada no vetor de arestas
                 incluido_arestas = false;
             }
@@ -84,6 +84,6 @@ void Grafo::mostraMaiorPesoPalavraDupla (){
     for (unsigned int indice = 0; indice < arestas.size(); indice++)
     {
         if (arestas[indice].getPesoAresta() == maior_peso)
-            cout << arestas[indice].getPrimeiroVertice()->getPalavra() << arestas[indice].getSegundoVertice()->getPalavra() << endl;
+            cout << arestas[indice].getNomePrimeiroVertice () << " " << arestas[indice].getNomeSegundoVertice () << endl;
     }
 }
