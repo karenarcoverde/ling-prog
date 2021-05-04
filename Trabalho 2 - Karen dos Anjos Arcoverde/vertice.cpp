@@ -6,7 +6,7 @@
 #include "vertice.h"
 
 void Vertice::setPalavra (string palavra_vertice){
-        palavra = palavra_vertice;
+    palavra = palavra_vertice;
 }
 
 string Vertice::getPalavra (){
