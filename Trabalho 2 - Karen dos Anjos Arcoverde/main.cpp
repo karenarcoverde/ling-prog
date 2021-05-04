@@ -40,10 +40,10 @@ int main(){
       string linha;
 
       getline (file, linha, ' ');
-      if ((linha[linha.length()-1] == '.') || (linha[linha.length()-1] == ','))
+      if ((linha[linha.length()-1] == '.') || (linha[linha.length()-1] == ',')){
          linha = linha.substr(0,linha.length()-1);
          segunda_palavra = 3;
-
+      }
       if (primeira_palavra == 1)  { 
          vertice.setPalavra (linha);
          grafo.insereVertice (vertice);
