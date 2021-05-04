@@ -17,6 +17,7 @@ int main(){
    Grafo grafo;
    Vertice vertice;
    int qtdVertices = 0;
+   int palavra_inicial = 1;
 
    int opcao_menu;
 
@@ -41,16 +42,23 @@ int main(){
       if ((linha[linha.length()-1] == '.') || (linha[linha.length()-1] == ','))
          linha = linha.substr(0,linha.length()-1);
 
-      vertice.setPalavra (linha);
-      grafo.insereVertice (vertice);
-      qtdVertices ++;
+      if (palavra_inicial == 1)  { 
+         vertice.setPalavra (linha);
+         grafo.insereVertice (vertice);
+         qtdVertices ++;
+         palavra_inicial = 0;
+      }
 
-      Aresta aresta (grafo.getVerticeEspecifico (qtdVertices - 1), grafo.getVerticeEspecifico (qtdVertices));
-      grafo.insereAresta (aresta);
-
-      file.close();
-
+      else if (palavra_inicial == 0){
+         vertice.setPalavra (linha);
+         grafo.insereVertice (vertice);
+         qtdVertices ++;
+         Aresta aresta (grafo.getVerticeEspecifico (qtdVertices - 1), grafo.getVerticeEspecifico (qtdVertices));
+         grafo.insereAresta (aresta);
+      }
    }
+
+   file.close();
 
    cout << "----------------- MENU -----------------" << endl;
    cout << "1. Mostrar a(s) palavra(s) mais utilizada(s) no texto " << endl;
@@ -68,11 +76,11 @@ int main(){
       {
       
       case 1:
-        
+         grafo.mostraMaiorPesoPalavra ();
          break;
 
       case 2:
-         
+         grafo.mostraMaiorPesoPalavraDupla ();
          break;
 
       case 3:
