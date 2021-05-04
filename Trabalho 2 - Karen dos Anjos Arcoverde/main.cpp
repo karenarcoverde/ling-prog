@@ -16,9 +16,41 @@ int main(){
 
    Grafo grafo;
    Vertice vertice;
+   int qtdVertices = 0;
+
    int opcao_menu;
+
    fstream file;
    string nomeArquivo;
+
+   //Lê o arquivo e guarda cada palavra lida em um vetor de strings
+
+   nomeArquivo = "texto.txt";
+
+   file.open (nomeArquivo, fstream::in);
+
+   if (!file.is_open()){
+      cout << "Arquivo nao existe." << endl;
+      return; 
+   }
+
+   while (file.good()){
+      string linha;
+
+      getline (file, linha, ' ');
+      if ((linha[linha.length()-1] == '.') || (linha[linha.length()-1] == ','))
+         linha = linha.substr(0,linha.length()-1);
+
+      vertice.setPalavra (linha);
+      grafo.insereVertice (vertice);
+      qtdVertices ++;
+
+      Aresta aresta (grafo.getVerticeEspecifico (qtdVertices - 1), grafo.getVerticeEspecifico (qtdVertices));
+      grafo.insereAresta (aresta);
+
+      file.close();
+
+   }
 
    cout << "----------------- MENU -----------------" << endl;
    cout << "1. Mostrar a(s) palavra(s) mais utilizada(s) no texto " << endl;
@@ -26,7 +58,6 @@ int main(){
    cout << "3. Mostrar a(s) sequencia(s) de palavras de comprimento N mais utilizada(s) no texto " << endl;
    cout << "4. Sair " << endl;
 
-   
 
    while (opcao_menu != 4)
    {
@@ -37,33 +68,11 @@ int main(){
       {
       
       case 1:
-         //Lê o arquivo e guarda cada palavra lida em um vetor de strings
-
-         nomeArquivo = "texto.txt";
-
-         file.open (nomeArquivo, fstream::in);
-
-         if (!file.is_open()){
-            cout << "Arquivo nao existe." << endl;
-            return; 
-         }
-
-         while (file.good()){
-            string linha;
-
-            getline (file, linha, ' ');
-            if ((linha[linha.length()-1] == '.') || (linha[linha.length()-1] == ','))
-            linha = linha.substr(0,linha.length()-1);
-
-            vertice.setPalavra (linha);
-            grafo.insereVertice (vertice);
-         }
-         file.close();
-         
+        
          break;
 
       case 2:
-        
+         
          break;
 
       case 3:

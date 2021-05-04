@@ -20,4 +20,5 @@ class Aresta{
     private:
         int peso = 1;
         Vertice *primeiroVertice, *segundoVertice; 
+        vector <string> vetorDeVertices;
 };

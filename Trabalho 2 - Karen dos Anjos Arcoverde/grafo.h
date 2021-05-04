@@ -17,8 +17,10 @@ class Grafo{
 
         void insereAresta (Aresta &);
         void mostraMaiorPesoPalavraDupla ();
-        
+
         void mostraMaiorPesopalavraN ();
+        
+        Vertice getVerticeEspecifico (int);
 
 
     private:

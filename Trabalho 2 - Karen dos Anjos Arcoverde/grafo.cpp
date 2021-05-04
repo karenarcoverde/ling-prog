@@ -4,6 +4,14 @@
 #include "grafo.h"
 
 
+
+
+Vertice *Grafo::getVerticeEspecifico (int qtdVertices){
+    return &vertices[qtdVertices];
+}
+
+
+
 void Grafo::insereVertice (Vertice &v){
 
     bool incluido_vertices = true;
