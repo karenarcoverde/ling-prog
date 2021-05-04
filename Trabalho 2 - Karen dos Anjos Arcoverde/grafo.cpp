@@ -84,6 +84,6 @@ void Grafo::mostraMaiorPesoPalavraDupla (){
     for (unsigned int indice = 0; indice < arestas.size(); indice++)
     {
         if (arestas[indice].getPesoAresta() == maior_peso)
-            cout << arestas[indice].getPesoAresta() << endl;
+            cout << arestas[indice].getPrimeiroVertice()->getPalavra() << arestas[indice].getSegundoVertice()->getPalavra() << endl;
     }
 }
