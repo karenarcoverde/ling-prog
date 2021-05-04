@@ -3,16 +3,18 @@
 
 #include "grafo.h"
 
-
-
+//para pegar todas as palavras do texto mesmo que tenha repetido palavra
+void Grafo::setTodosOsVertices (Vertice &v_2){ 
+    vertices_modificado.push_back(v_2);
+}
 
 Vertice *Grafo::getVerticeEspecifico (int qtdVertices){
-    return &vertices[qtdVertices];
+    return &vertices_modificado[qtdVertices];
 }
 
 
 
-void Grafo::insereVertice (Vertice &v){
+void Grafo::insereVertice (Vertice &v){ //pega todas as palavras não repetidas no texto
 
     bool incluido_vertices = true;
 

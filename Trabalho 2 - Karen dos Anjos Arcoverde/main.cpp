@@ -33,7 +33,7 @@ int main(){
 
    if (!file.is_open()){
       cout << "Arquivo nao existe." << endl;
-      return; 
+      return 2; 
    }
 
    while (file.good()){
@@ -51,22 +51,24 @@ int main(){
          primeira_palavra = 0;
       }
 
-      else if (segunda_palavra == 2){
-         vertice.setPalavra (linha);
-         grafo.insereVertice (vertice);
-         qtdVertices ++;
-         Aresta aresta (grafo.getVerticeEspecifico (qtdVertices - 1), grafo.getVerticeEspecifico (qtdVertices));
-         grafo.insereAresta (aresta);
-         primeira_palavra = 0;
-      }
-
       else if (segunda_palavra == 3){
          vertice.setPalavra (linha);
          grafo.insereVertice (vertice);
          qtdVertices ++;
+         grafo.setTodosOsVertices (vertice);
          Aresta aresta (grafo.getVerticeEspecifico (qtdVertices - 1), grafo.getVerticeEspecifico (qtdVertices));
          grafo.insereAresta (aresta);
          primeira_palavra = 1;
+      }
+
+      else if (segunda_palavra == 2){
+         vertice.setPalavra (linha);
+         grafo.insereVertice (vertice);
+         qtdVertices ++;
+         grafo.setTodosOsVertices (vertice);
+         Aresta aresta (grafo.getVerticeEspecifico (qtdVertices - 1), grafo.getVerticeEspecifico (qtdVertices));
+         grafo.insereAresta (aresta);
+         primeira_palavra = 0;
       }
    }
 

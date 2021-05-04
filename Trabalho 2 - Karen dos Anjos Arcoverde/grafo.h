@@ -20,10 +20,12 @@ class Grafo{
 
         void mostraMaiorPesopalavraN ();
         
-        Vertice getVerticeEspecifico (int);
+        void setTodosOsVertices (Vertice &);
+        Vertice *getVerticeEspecifico (int);
 
 
     private:
         vector <Vertice> vertices;
         vector <Aresta> arestas;
+        vector <Vertice> vertices_modificado;
 };
