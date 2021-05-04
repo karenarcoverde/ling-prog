@@ -16,9 +16,9 @@ int main(){
 
    Grafo grafo;
    Vertice vertice;
-   int qtdVertices = -1;
-   int primeira_palavra = 1;
-   int segunda_palavra = 0;
+   int qtdVertices = 0;
+   int primeira_palavra = 5; //escolhido dois valores aleatoriamente para definir qual eh a palavra que eh final de frase ou inicio de frase
+   int segunda_palavra = 2;
 
    int opcao_menu;
 
@@ -42,35 +42,35 @@ int main(){
       getline (file, linha, ' ');
       if ((linha[linha.length()-1] == '.') || (linha[linha.length()-1] == ',')){
          linha = linha.substr(0,linha.length()-1);
-         segunda_palavra = 1;
+         segunda_palavra = 5;
       }
-      if (primeira_palavra == 1)  { 
+      if (primeira_palavra == 5)  { 
          vertice.setPalavra (linha);
          grafo.insereVertice (vertice);
          qtdVertices ++;
-         primeira_palavra = 0;
+         primeira_palavra = 2;
          grafo.setTodosOsVertices (vertice);       
       }
 
-      else if (segunda_palavra == 0){
+      else if (segunda_palavra == 2){
          vertice.setPalavra (linha);
          grafo.insereVertice (vertice);
          qtdVertices ++;
          grafo.setTodosOsVertices (vertice);
-         Aresta aresta (grafo.getVerticeEspecifico (qtdVertices - 1), grafo.getVerticeEspecifico (qtdVertices));
+         Aresta aresta (grafo.getVerticeEspecifico (qtdVertices - 2), grafo.getVerticeEspecifico (qtdVertices-1));
          grafo.insereAresta (aresta);
-         primeira_palavra = 0;
+         primeira_palavra = 2;
       }
 
-      else if (segunda_palavra == 1){
+      else if (segunda_palavra == 5){
          vertice.setPalavra (linha);
          grafo.insereVertice (vertice);
          qtdVertices ++;
          grafo.setTodosOsVertices (vertice);
-         Aresta aresta (grafo.getVerticeEspecifico (qtdVertices - 1), grafo.getVerticeEspecifico (qtdVertices));
+         Aresta aresta (grafo.getVerticeEspecifico (qtdVertices - 2), grafo.getVerticeEspecifico (qtdVertices-1));
          grafo.insereAresta (aresta);
-         primeira_palavra = 1;
-         segunda_palavra = 0;
+         segunda_palavra = 2;
+         primeira_palavra = 5;
       }
 
       
@@ -100,7 +100,7 @@ int main(){
          break;
 
       case 3:
-      
+         cout << "Nao implementada" << endl;
          break;
 
       case 4:
