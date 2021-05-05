@@ -40,12 +40,15 @@ int main(){
       string linha;
 
       getline (file, linha, ' ');
+
+
       if ((linha[linha.length()-1] == '.') || (linha[linha.length()-1] == ',')){
          linha = linha.substr(0,linha.length()-1);
          segunda_palavra = 5;
       }
 
-      if (file.eof()){
+      
+      if ((file.eof())){
          linha = linha.substr (0, linha.length() -2);
          segunda_palavra = 5;
       }
@@ -58,6 +61,16 @@ int main(){
          grafo.setTodosOsVertices (vertice);       
       }
 
+      else if (segunda_palavra == 2){
+         vertice.setPalavra (linha);
+         grafo.insereVertice (vertice);
+         qtdVertices ++;
+         grafo.setTodosOsVertices (vertice);
+         Aresta aresta (grafo.getVerticeEspecifico (qtdVertices - 2), grafo.getVerticeEspecifico (qtdVertices-1));
+         grafo.insereAresta (aresta);
+         primeira_palavra = 2;
+      }
+
       else if (segunda_palavra == 5){
          vertice.setPalavra (linha);
          grafo.insereVertice (vertice);
@@ -68,16 +81,7 @@ int main(){
          segunda_palavra = 2;
          primeira_palavra = 5;
       }
-
-      else if (segunda_palavra == 2){
-         vertice.setPalavra (linha);
-         grafo.insereVertice (vertice);
-         qtdVertices ++;
-         grafo.setTodosOsVertices (vertice);
-         Aresta aresta (grafo.getVerticeEspecifico (qtdVertices - 2), grafo.getVerticeEspecifico (qtdVertices-1));
-         grafo.insereAresta (aresta);
-         primeira_palavra = 2;
-      }
+      
    }
    file.close();
 
