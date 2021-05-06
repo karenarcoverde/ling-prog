@@ -27,7 +27,7 @@ string Aresta::getNomeSegundoVertice (){
 }
 
 void Aresta::setPesoAresta (){
-    peso++;
+    peso++; //soma 1 sempre que receber um vertice
 }
 
 int Aresta::getPesoAresta (){

@@ -8,7 +8,7 @@ using namespace std;
 
 class Aresta{
     public:
-        Aresta (Vertice, Vertice);
+        Aresta (Vertice, Vertice); //construtor
 
         void setPesoAresta ();
         int getPesoAresta ();

@@ -16,7 +16,7 @@ Vertice Grafo::getVerticeEspecifico (int qtdVertices){
 
 void Grafo::insereVertice (Vertice &v){ //pega todas as palavras não repetidas no texto
 
-    bool incluido_vertices = true;
+    int incluido_vertices = 1;
 
     if (vertices.size() == 0)
         vertices.push_back (v);
@@ -26,10 +26,10 @@ void Grafo::insereVertice (Vertice &v){ //pega todas as palavras não repetidas 
         {
             if (vertices[indice].getPalavra() == v.getPalavra()){
                 vertices[indice].setPesoPalavra(); //adiciona 1 sempre que a palavra nova for igual a alguma já colocada no vetor de vertices
-                incluido_vertices = false;
+                incluido_vertices = 0;
            }
         }
-        if (incluido_vertices)
+        if (incluido_vertices == 1)
             vertices.push_back (v);      
     }
 }
@@ -53,7 +53,7 @@ void Grafo::mostraMaiorPesoPalavra (){
 
 void Grafo::insereAresta (Aresta &a){
 
-     bool incluido_arestas = true;
+    int incluido_arestas = 1;
 
     if (arestas.size() == 0)
         arestas.push_back (a);
@@ -63,10 +63,10 @@ void Grafo::insereAresta (Aresta &a){
         {
             if (arestas[indice].getNomePrimeiroVertice () == a.getNomePrimeiroVertice () && arestas[indice].getNomeSegundoVertice () == a.getNomeSegundoVertice()){
                 arestas[indice].setPesoAresta(); //adiciona 1 sempre que a aresta nova for igual a alguma já colocada no vetor de arestas
-                incluido_arestas = false;
+                incluido_arestas = 0;
             }
         }
-        if (incluido_arestas)
+        if (incluido_arestas == 1)
             arestas.push_back (a);      
     }
 }
