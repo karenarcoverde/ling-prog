@@ -47,7 +47,7 @@ int main(){
          segunda_palavra = 5;
       }
 
-      //se usar linux, eh necessario utilizar esse if para tirar o eof do final do texto 
+      //se usar o txt feito em linux, eh necessario utilizar esse if para tirar o eof do final do texto 
       if ((file.eof())){
          linha = linha.substr (0, linha.length() -2);
          segunda_palavra = 5;
