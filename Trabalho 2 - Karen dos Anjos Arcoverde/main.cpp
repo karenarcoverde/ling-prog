@@ -61,16 +61,6 @@ int main(){
          grafo.setTodosOsVertices (vertice);       
       }
 
-      else if (segunda_palavra == 2){
-         vertice.setPalavra (linha);
-         grafo.insereVertice (vertice);
-         qtdVertices ++;
-         grafo.setTodosOsVertices (vertice);
-         Aresta aresta (grafo.getVerticeEspecifico (qtdVertices - 2), grafo.getVerticeEspecifico (qtdVertices-1));
-         grafo.insereAresta (aresta);
-         primeira_palavra = 2;
-      }
-
       else if (segunda_palavra == 5){
          vertice.setPalavra (linha);
          grafo.insereVertice (vertice);
@@ -82,6 +72,15 @@ int main(){
          primeira_palavra = 5;
       }
       
+      else if (segunda_palavra == 2){
+         vertice.setPalavra (linha);
+         grafo.insereVertice (vertice);
+         qtdVertices ++;
+         grafo.setTodosOsVertices (vertice);
+         Aresta aresta (grafo.getVerticeEspecifico (qtdVertices - 2), grafo.getVerticeEspecifico (qtdVertices-1));
+         grafo.insereAresta (aresta);
+         primeira_palavra = 2;
+      }
    }
    file.close();
 
