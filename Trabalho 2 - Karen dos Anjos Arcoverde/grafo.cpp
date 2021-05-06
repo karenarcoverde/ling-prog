@@ -9,7 +9,7 @@ void Grafo::setTodosOsVertices (Vertice &v_2){
 }
 
 Vertice Grafo::getVerticeEspecifico (int qtdVertices){
-    return vertices_modificado[qtdVertices];
+    return vertices_modificado[qtdVertices]; //pega um vertice especifico escolhido na main.cpp
 }
 
 
@@ -24,12 +24,12 @@ void Grafo::insereVertice (Vertice &v){ //pega todas as palavras não repetidas 
     else{
         for (unsigned int indice = 0; indice < vertices.size(); indice++)
         {
-            if (vertices[indice].getPalavra() == v.getPalavra()){
+            if (vertices[indice].getPalavra() == v.getPalavra()){ //se ja tiver uma palavra igual no vetor de vertices
                 vertices[indice].setPesoPalavra(); //adiciona 1 sempre que a palavra nova for igual a alguma já colocada no vetor de vertices
                 incluido_vertices = 0;
            }
         }
-        if (incluido_vertices == 1)
+        if (incluido_vertices == 1) //se a palavra nao tiver sido repetida no vetor de vertices, inclui no vetor
             vertices.push_back (v);      
     }
 }
@@ -45,7 +45,7 @@ void Grafo::mostraMaiorPesoPalavra (){
 
     for (unsigned int indice = 0; indice < vertices.size(); indice++)
     {
-        if (vertices[indice].getPesoPalavra() == maior_peso)
+        if (vertices[indice].getPesoPalavra() == maior_peso) //imprime a palavra sempre que o maior peso for repetido mais de uma vez
             cout << vertices[indice].getPalavra() << endl;
     }
 }
@@ -75,9 +75,9 @@ void Grafo::mostraMaiorPesoPalavraDupla (){
 
     int maior_peso = 0;
 
-    for (unsigned int indice = 0; indice < arestas.size(); indice++)
+    for (unsigned int indice = 0; indice < arestas.size(); indice++) //pega o maior peso e guarda numa variavel
     {
-        if (arestas [indice].getPesoAresta() > maior_peso)
+        if (arestas [indice].getPesoAresta() > maior_peso) //enquanto guarda um valor, compara para ver se tem outro maior, caso tenha, substitui o valor
             maior_peso = arestas[indice].getPesoAresta();
     }
 
