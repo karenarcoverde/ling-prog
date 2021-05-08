@@ -1,1 +1,0 @@
-Essa frase e um exemplo e, a partir dessa frase, espera-se que o exercicio fique claro. Essa frase tem pontuacao. Todas as construcoes de palavras consecutivas com pontuacao devem ser excluidas.
