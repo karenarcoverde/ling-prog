@@ -23,3 +23,10 @@ bool operator==(const filme &primfilme, const filme &segfilme){
 
     return false;
 };
+
+bool operator>(const filme &item_filme, const double &notaDoFilme){
+    if (item_filme.notaDoFilme > notaDoFilme) 
+        return true;
+
+    return false;
+}
