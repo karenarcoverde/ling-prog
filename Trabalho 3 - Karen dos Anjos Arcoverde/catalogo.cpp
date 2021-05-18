@@ -60,3 +60,49 @@ void Catalogo::RenovarCatalogo(){
 
     file.close();
 }
+
+Catalogo::Catalogo(){
+    vector <filme> conjuntoDeFilmesModificado;
+    nomeArquivo = "filmes.txt";
+
+    fstream file;
+    string linhaDoFilme;
+
+    file.open(nomeArquivo, fstream::in);
+
+    if (!file.is_open()) {
+        cout << "Arquivo nao existe. " << endl;
+    }
+
+    else {
+        while(getline(file, linhaDoFilme)){
+
+            vector <string> informacoesFilme;
+
+            while(file.good()) {
+
+                string informacaoFilme;
+
+                getline(file, informacaoFilme, ',');
+                informacoesFilme.push_back(informacaoFilme);
+            }
+
+            filme LinhaFilme;
+
+            LinhaFilme.nomeDoFilme = informacoesFilme.at(0);
+            LinhaFilme.nomeDaProdutora = informacoesFilme.at(1);
+            LinhaFilme.notaDoFilme = stod(informacoesFilme.at(2));
+
+            conjuntoDeFilmesModificado.push_back(LinhaFilme);
+        }
+
+        file.close();
+
+        if (conjuntoDeFilmesModificado.size() <= tamanhoMaximoNumeroDeFilmes) 
+            conjuntoDeFilmes = conjuntoDeFilmesModificado;
+        else {
+            cout << "Passou o tamanho maximo para o numero de filmes!" << endl;
+            exit(0);
+        }
+    }
+}
