@@ -4,7 +4,6 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
-#include <sstream>
 #include <algorithm>
 
 #include "filme.h"
@@ -32,6 +31,6 @@ class Catalogo {
 
     private:
         const static int tamanhoMaximoNumeroDeFilmes = 20;
-        string arquivo;
+        string nomeArquivo;
         vector <filme> conjuntoDeFilmes;
 };
