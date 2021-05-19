@@ -4,7 +4,7 @@
 #include "catalogo.h"
 
 ostream &operator<<(ostream &saida, const Catalogo &catalogo){
-    for (int indice_filmes = 0; indice_filmes < catalogo.conjuntoDeFilmes.size(); indice_filmes++)
+    for (unsigned int indice_filmes = 0; indice_filmes < catalogo.conjuntoDeFilmes.size(); indice_filmes++)
         saida << catalogo.conjuntoDeFilmes.at(indice_filmes);
     
     return saida;
@@ -35,11 +35,12 @@ void Catalogo::ExibeFilmeBemAvaliado(){
     filme filmeBemAvaliado;
     filmeBemAvaliado.notaDoFilme = 0;
 
-    for (int indice_conjunto_filmes = 0; indice_conjunto_filmes < conjuntoDeFilmes.size(); indice_conjunto_filmes++){
+    for (unsigned int indice_conjunto_filmes = 0; indice_conjunto_filmes < conjuntoDeFilmes.size(); indice_conjunto_filmes++){
         if (conjuntoDeFilmes.at(indice_conjunto_filmes) > filmeBemAvaliado.notaDoFilme) 
             filmeBemAvaliado = conjuntoDeFilmes.at(indice_conjunto_filmes);
     }
-    cout << "O filme mais bem avaliado eh:" << filmeBemAvaliado << endl;
+    cout << "O filme mais bem avaliado eh:" << endl;
+    cout << filmeBemAvaliado << endl;
 }
 
 void Catalogo::RenovarCatalogo(){
@@ -52,7 +53,7 @@ void Catalogo::RenovarCatalogo(){
     }
 
     //reescreve com as novas alteracoes 
-    for (int indice_conjunto_filmes = 0; indice_conjunto_filmes < conjuntoDeFilmes.size(); indice_conjunto_filmes++){
+    for (unsigned int indice_conjunto_filmes = 0; indice_conjunto_filmes < conjuntoDeFilmes.size(); indice_conjunto_filmes++){
         file << conjuntoDeFilmes.at(indice_conjunto_filmes).nomeDoFilme << ',';
         file << conjuntoDeFilmes.at(indice_conjunto_filmes).nomeDaProdutora << ',';
         file  << conjuntoDeFilmes.at(indice_conjunto_filmes).notaDoFilme<< endl;
@@ -112,7 +113,7 @@ filme *Catalogo::operator()(string nomefilmeEscolhido, string ProdutoraEscolhida
     if (conjuntoDeFilmes.size() == 0) 
         return NULL;
 
-    for (int indiceconjuntoDeFilmes = 0; indiceconjuntoDeFilmes < conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++) {
+    for (unsigned int indiceconjuntoDeFilmes = 0; indiceconjuntoDeFilmes < conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++) {
 
         if (conjuntoDeFilmes.at(indiceconjuntoDeFilmes).nomeDoFilme == nomefilmeEscolhido) {
             conjuntoDeFilmes.at(indiceconjuntoDeFilmes).nomeDaProdutora = ProdutoraEscolhida;
@@ -127,7 +128,7 @@ filme *Catalogo::operator()(string nomefilmeEscolhido, double NotaEscolhida){
     if (conjuntoDeFilmes.size() == 0) 
         return NULL;
 
-    for (int indiceconjuntoDeFilmes = 0; indiceconjuntoDeFilmes < conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++) {
+    for (unsigned int indiceconjuntoDeFilmes = 0; indiceconjuntoDeFilmes < conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++) {
 
         if (conjuntoDeFilmes.at(indiceconjuntoDeFilmes).nomeDoFilme == nomefilmeEscolhido) {
             conjuntoDeFilmes.at(indiceconjuntoDeFilmes).notaDoFilme= NotaEscolhida;
@@ -143,7 +144,7 @@ filme *Catalogo::operator()(string nomefilmeEscolhido){
         return NULL;
     }
 
-    for (int indiceconjuntoDeFilmes = 0; indiceconjuntoDeFilmes < conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++) {
+    for (unsigned int indiceconjuntoDeFilmes = 0; indiceconjuntoDeFilmes < conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++) {
         if (conjuntoDeFilmes.at(indiceconjuntoDeFilmes).nomeDoFilme == nomefilmeEscolhido) 
             return &conjuntoDeFilmes.at(indiceconjuntoDeFilmes);
     }
@@ -152,19 +153,14 @@ filme *Catalogo::operator()(string nomefilmeEscolhido){
 
 const Catalogo &operator-=(Catalogo &catalogo, const filme &filmeEscolhido){
 
-    if (!&filmeEscolhido) 
-        cout << "Nao tem o filme " << endl;
+    int indiceFilmeEscolhido;
 
-    else {
-        int indiceFilmeEscolhido;
-
-        for (int indiceconjuntoDeFilmes = 0; indiceconjuntoDeFilmes < catalogo.conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++){
-            if (catalogo.conjuntoDeFilmes.at(indiceconjuntoDeFilmes) == filmeEscolhido)
-                indiceFilmeEscolhido = indiceconjuntoDeFilmes;
-        }
-
-        catalogo.conjuntoDeFilmes.erase(catalogo.conjuntoDeFilmes.begin()+indiceFilmeEscolhido); //apaga o filme escolhido utilizando o metodo erase
+    for (unsigned int indiceconjuntoDeFilmes = 0; indiceconjuntoDeFilmes < catalogo.conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++){
+        if (catalogo.conjuntoDeFilmes.at(indiceconjuntoDeFilmes) == filmeEscolhido)
+            indiceFilmeEscolhido = indiceconjuntoDeFilmes;
     }
+
+    catalogo.conjuntoDeFilmes.erase(catalogo.conjuntoDeFilmes.begin()+indiceFilmeEscolhido); //apaga o filme escolhido utilizando o metodo erase
 
     return catalogo;
 }
@@ -178,14 +174,14 @@ const Catalogo &operator+=(Catalogo &catalogo, const filme &filmeEscolhido){
     else {
         int filmeRepetido = 0;
 
-        for (int indiceconjuntoDeFilmes= 0; indiceconjuntoDeFilmes < catalogo.conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++){
+        for (unsigned int indiceconjuntoDeFilmes= 0; indiceconjuntoDeFilmes < catalogo.conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++){
             if (catalogo.conjuntoDeFilmes.at(indiceconjuntoDeFilmes) == filmeEscolhido) 
                 filmeRepetido = 1; // para encontrar se o filme escolhido ja esta contido no catalogo
         }
 
         // so entra nesse if se nao repetido o filme escolhido
-        if (filmeRepetido = 0) {
-            for (int indiceconjuntoDeFilmes = 0; indiceconjuntoDeFilmes < catalogo.conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++){
+        if (filmeRepetido == 0) {
+            for (unsigned int indiceconjuntoDeFilmes = 0; indiceconjuntoDeFilmes < catalogo.conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++){
                 //verifica se o filme escolhido pode entrar na primeira posicao do catalogo
                 if (catalogo.conjuntoDeFilmes.at(indiceconjuntoDeFilmes) > filmeEscolhido and indiceconjuntoDeFilmes == 0) {
                     catalogo.conjuntoDeFilmes.insert(catalogo.conjuntoDeFilmes.begin(), filmeEscolhido);
@@ -205,7 +201,7 @@ const Catalogo &operator+=(Catalogo &catalogo, const filme &filmeEscolhido){
                 }
             }
         }
-        else if (filmeRepetido = 1)
+        else if (filmeRepetido == 1)
             cout << "Este filme ja esta contido no catalogo. Tente novamente. " << endl;
     }
     return catalogo;
@@ -220,16 +216,16 @@ const Catalogo &operator+=(Catalogo &catalogo, const vector <filme> &vetorDeFilm
         cout << "Passou o tamanho maximo para o numero de filmes!" << endl;
 
     else {
-        for (int indicevetorDeFilmes = 0; indicevetorDeFilmes < vetorDeFilmes.size(); indicevetorDeFilmes++){
+        for (unsigned int indicevetorDeFilmes = 0; indicevetorDeFilmes < vetorDeFilmes.size(); indicevetorDeFilmes++){
 
             int filmeRepetido = 0;
 
-            for (int indiceconjuntoDeFilmes = 0; indiceconjuntoDeFilmes < catalogo.conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++){
+            for (unsigned int indiceconjuntoDeFilmes = 0; indiceconjuntoDeFilmes < catalogo.conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++){
                 if (catalogo.conjuntoDeFilmes.at(indiceconjuntoDeFilmes) == vetorDeFilmes.at(indicevetorDeFilmes)) 
                     filmeRepetido = 1;
             }
 
-            if (filmeRepetido = 0) 
+            if (filmeRepetido == 0) 
                 catalogo += vetorDeFilmes.at(indicevetorDeFilmes);
             else 
                 cout << "Este filme ja esta contido no catalogo. Tente novamente. " << endl;
