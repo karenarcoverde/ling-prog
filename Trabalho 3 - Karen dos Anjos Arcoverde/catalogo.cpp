@@ -198,7 +198,7 @@ const Catalogo &operator+=(Catalogo &catalogo, const filme &filmeEscolhido){
                     break;
                 }
 
-                //verifica se o filme escolhido estraria na ultima posicao
+                //verifica se o filme escolhido estaria na ultima posicao
                 else if (indiceconjuntoDeFilmes == catalogo.conjuntoDeFilmes.size() - 1) {
                     catalogo.conjuntoDeFilmes.push_back(filmeEscolhido);
                     break;
@@ -217,20 +217,22 @@ const Catalogo &operator+=(Catalogo &catalogo, const vector <filme> &vetorDeFilm
         catalogo.conjuntoDeFilmes.insert(catalogo.conjuntoDeFilmes.end(),vetorDeFilmes.begin(),vetorDeFilmes.end());
 
     else if (catalogo.conjuntoDeFilmes.size() + 1 > catalogo.tamanhoMaximoNumeroDeFilmes) 
-        cout << "Operacao impossivel, limite maximo atingido." << endl;
+        cout << "Passou o tamanho maximo para o numero de filmes!" << endl;
 
     else {
-        for (int indiceEntrada = 0; indiceEntrada < vetorDeFilmes.size(); indiceEntrada++){
-            bool achouFilmeIgual = false;
+        for (int indicevetorDeFilmes = 0; indicevetorDeFilmes < vetorDeFilmes.size(); indicevetorDeFilmes++){
+
+            int filmeRepetido = 0;
+
             for (int indiceconjuntoDeFilmes = 0; indiceconjuntoDeFilmes < catalogo.conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++){
-                if (catalogo.conjuntoDeFilmes.at(indiceconjuntoDeFilmes) == vetorDeFilmes.at(indiceEntrada)) 
-                    achouFilmeIgual = true;
+                if (catalogo.conjuntoDeFilmes.at(indiceconjuntoDeFilmes) == vetorDeFilmes.at(indicevetorDeFilmes)) 
+                    filmeRepetido = 1;
             }
 
-            if (!achouFilmeIgual) 
-                catalogo += vetorDeFilmes.at(indiceEntrada);
+            if (filmeRepetido = 0) 
+                catalogo += vetorDeFilmes.at(indicevetorDeFilmes);
             else 
-                cout << "Filme " << vetorDeFilmes.at(indiceEntrada).nomeDoFilme << " ja existe. Se quiser, edite seus dados." << endl;
+                cout << "Este filme ja esta contido no catalogo. Tente novamente. " << endl;
         }
     }
     return catalogo;
