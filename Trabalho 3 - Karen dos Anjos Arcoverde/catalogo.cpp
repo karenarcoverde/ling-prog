@@ -106,3 +106,132 @@ Catalogo::Catalogo(){
         }
     }
 }
+
+filme *Catalogo::operator()(string nomefilmeEscolhido, string ProdutoraEscolhida){
+
+    if (conjuntoDeFilmes.size() == 0) 
+        return NULL;
+
+    for (int indiceconjuntoDeFilmes = 0; indiceconjuntoDeFilmes < conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++) {
+
+        if (conjuntoDeFilmes.at(indiceconjuntoDeFilmes).nomeDoFilme == nomefilmeEscolhido) {
+            conjuntoDeFilmes.at(indiceconjuntoDeFilmes).nomeDaProdutora = ProdutoraEscolhida;
+            return &conjuntoDeFilmes.at(indiceconjuntoDeFilmes);
+        }
+    }
+    return NULL; 
+}
+
+filme *Catalogo::operator()(string nomefilmeEscolhido, double NotaEscolhida){
+
+    if (conjuntoDeFilmes.size() == 0) 
+        return NULL;
+
+    for (int indiceconjuntoDeFilmes = 0; indiceconjuntoDeFilmes < conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++) {
+
+        if (conjuntoDeFilmes.at(indiceconjuntoDeFilmes).nomeDoFilme == nomefilmeEscolhido) {
+            conjuntoDeFilmes.at(indiceconjuntoDeFilmes).notaDoFilme= NotaEscolhida;
+            return &conjuntoDeFilmes.at(indiceconjuntoDeFilmes);
+        }
+    }
+    return NULL;
+}
+
+filme *Catalogo::operator()(string nomefilmeEscolhido){
+    if (conjuntoDeFilmes.size() == 0) {
+        cout << "Catalogo sem nenhum filme " << endl;
+        return NULL;
+    }
+
+    for (int indiceconjuntoDeFilmes = 0; indiceconjuntoDeFilmes < conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++) {
+        if (conjuntoDeFilmes.at(indiceconjuntoDeFilmes).nomeDoFilme == nomefilmeEscolhido) 
+            return &conjuntoDeFilmes.at(indiceconjuntoDeFilmes);
+    }
+    return NULL;
+}
+
+const Catalogo &operator-=(Catalogo &catalogo, const filme &filmeEscolhido){
+
+    if (!&filmeEscolhido) 
+        cout << "Nao tem o filme " << endl;
+
+    else {
+        int indiceFilmeEscolhido;
+
+        for (int indiceconjuntoDeFilmes = 0; indiceconjuntoDeFilmes < catalogo.conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++){
+            if (catalogo.conjuntoDeFilmes.at(indiceconjuntoDeFilmes) == filmeEscolhido)
+                indiceFilmeEscolhido = indiceconjuntoDeFilmes;
+        }
+
+        catalogo.conjuntoDeFilmes.erase(catalogo.conjuntoDeFilmes.begin()+indiceFilmeEscolhido); //apaga o filme escolhido utilizando o metodo erase
+    }
+
+    return catalogo;
+}
+
+
+const Catalogo &operator+=(Catalogo &catalogo, const filme &filmeEscolhido){
+
+    if (catalogo.conjuntoDeFilmes.size() == 0) 
+        catalogo.conjuntoDeFilmes.push_back(filmeEscolhido);
+
+    else {
+        int filmeRepetido = 0;
+
+        for (int indiceconjuntoDeFilmes= 0; indiceconjuntoDeFilmes < catalogo.conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++){
+            if (catalogo.conjuntoDeFilmes.at(indiceconjuntoDeFilmes) == filmeEscolhido) 
+                filmeRepetido = 1; // para encontrar se o filme escolhido ja esta contido no catalogo
+        }
+
+        // so entra nesse if se nao repetido o filme escolhido
+        if (filmeRepetido = 0) {
+            for (int indiceconjuntoDeFilmes = 0; indiceconjuntoDeFilmes < catalogo.conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++){
+                //verifica se o filme escolhido pode entrar na primeira posicao do catalogo
+                if (catalogo.conjuntoDeFilmes.at(indiceconjuntoDeFilmes) > filmeEscolhido and indiceconjuntoDeFilmes == 0) {
+                    catalogo.conjuntoDeFilmes.insert(catalogo.conjuntoDeFilmes.begin(), filmeEscolhido);
+                    break;
+                }
+
+                //se pode inserir no meio do filmes o novo filme
+                else if (catalogo.conjuntoDeFilmes.at(indiceconjuntoDeFilmes) > filmeEscolhido) {
+                    catalogo.conjuntoDeFilmes.insert(catalogo.conjuntoDeFilmes.begin()+indiceconjuntoDeFilmes, filmeEscolhido);
+                    break;
+                }
+
+                //verifica se o filme escolhido estraria na ultima posicao
+                else if (indiceconjuntoDeFilmes == catalogo.conjuntoDeFilmes.size() - 1) {
+                    catalogo.conjuntoDeFilmes.push_back(filmeEscolhido);
+                    break;
+                }
+            }
+        }
+        else if (filmeRepetido = 1)
+            cout << "Este filme ja esta contido no catalogo. Tente novamente. " << endl;
+    }
+    return catalogo;
+}
+
+const Catalogo &operator+=(Catalogo &catalogo, const vector <filme> &vetorDeFilmes){
+
+    if (catalogo.conjuntoDeFilmes.size() == 0) 
+        catalogo.conjuntoDeFilmes.insert(catalogo.conjuntoDeFilmes.end(),vetorDeFilmes.begin(),vetorDeFilmes.end());
+
+    else if (catalogo.conjuntoDeFilmes.size() + 1 > catalogo.tamanhoMaximoNumeroDeFilmes) 
+        cout << "Operacao impossivel, limite maximo atingido." << endl;
+
+    else {
+        for (int indiceEntrada = 0; indiceEntrada < vetorDeFilmes.size(); indiceEntrada++){
+            bool achouFilmeIgual = false;
+            for (int indiceconjuntoDeFilmes = 0; indiceconjuntoDeFilmes < catalogo.conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++){
+                if (catalogo.conjuntoDeFilmes.at(indiceconjuntoDeFilmes) == vetorDeFilmes.at(indiceEntrada)) 
+                    achouFilmeIgual = true;
+            }
+
+            if (!achouFilmeIgual) 
+                catalogo += vetorDeFilmes.at(indiceEntrada);
+            else 
+                cout << "Filme " << vetorDeFilmes.at(indiceEntrada).nomeDoFilme << " ja existe. Se quiser, edite seus dados." << endl;
+        }
+    }
+    return catalogo;
+}
