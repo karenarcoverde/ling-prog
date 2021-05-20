@@ -1,0 +1,9 @@
+Abril,Disney,9
+Avatar,Lighstorm Entertainment,5.7
+Cidade de Deus,Warner,9
+Harry,Warner Bros,10
+Lilo e Stitch,Walt Disney Pictures,10
+Nasce uma Estrela,Warner Bros Pictures,2
+Toy Story,Netflix,4
+Vingadores,Marvel Studios,8.5
+Zathura,Warner Bros,9.5

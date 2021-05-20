@@ -5,8 +5,10 @@
 #include "filme.h"
 
 istream &operator>>(istream &entrada, filme &item_filme){
+
     getline(entrada, item_filme.nomeDoFilme);
     getline(entrada, item_filme.nomeDaProdutora);
+
 
     entrada >> item_filme.notaDoFilme;
 

@@ -45,6 +45,7 @@ void Catalogo::ExibeFilmeBemAvaliado(){
 
 void Catalogo::RenovarCatalogo(){
     fstream file;
+    string nomeArquivo = "filmes.txt";
     file.open(nomeArquivo, fstream::out);
 
     if (!file.is_open()){
@@ -63,49 +64,36 @@ void Catalogo::RenovarCatalogo(){
 }
 
 Catalogo::Catalogo(){
-    vector <filme> conjuntoDeFilmesModificado;
-    nomeArquivo = "filmes.txt";
+    string nomeArquivo = "filmes.txt";
+    filme filmeAuxiliar;
+    string notaAuxiliar;
+    vector <filme> filmesAuxiliar;
 
     fstream file;
-    string linhaDoFilme;
+    file.open (nomeArquivo, fstream::in);
 
-    file.open(nomeArquivo, fstream::in);
-
-    if (!file.is_open()) {
+    if (!file.is_open()){
         cout << "Arquivo nao existe. " << endl;
+        exit(0);
     }
 
-    else {
-        while(getline(file, linhaDoFilme)){
+    
+    while (!file.eof()){
 
-            vector <string> informacoesFilme;
+        getline (file, filmeAuxiliar.nomeDoFilme, ',');
+        getline (file, filmeAuxiliar.nomeDaProdutora, ',');
+        getline (file, notaAuxiliar);
+        filmeAuxiliar.notaDoFilme = stod (notaAuxiliar);
 
-            while(file.good()) {
-
-                string informacaoFilme;
-
-                getline(file, informacaoFilme, ',');
-                informacoesFilme.push_back(informacaoFilme);
-            }
-
-            filme LinhaFilme;
-
-            LinhaFilme.nomeDoFilme = informacoesFilme.at(0);
-            LinhaFilme.nomeDaProdutora = informacoesFilme.at(1);
-            LinhaFilme.notaDoFilme = stod(informacoesFilme.at(2));
-
-            conjuntoDeFilmesModificado.push_back(LinhaFilme);
-        }
-
-        file.close();
-
-        if (conjuntoDeFilmesModificado.size() <= tamanhoMaximoNumeroDeFilmes) 
-            conjuntoDeFilmes = conjuntoDeFilmesModificado;
-        else {
-            cout << "Passou o tamanho maximo para o numero de filmes!" << endl;
-            exit(0);
+        if (!file.eof()){
+                filmesAuxiliar.push_back (filmeAuxiliar);
         }
     }
+    
+    file.close();
+    
+    conjuntoDeFilmes = filmesAuxiliar;
+
 }
 
 filme *Catalogo::operator()(string nomefilmeEscolhido, string ProdutoraEscolhida){
@@ -171,39 +159,39 @@ const Catalogo &operator+=(Catalogo &catalogo, const filme &filmeEscolhido){
     if (catalogo.conjuntoDeFilmes.size() == 0) 
         catalogo.conjuntoDeFilmes.push_back(filmeEscolhido);
 
-    else {
-        int filmeRepetido = 0;
+    
+    int filmeRepetido = 0;
 
-        for (unsigned int indiceconjuntoDeFilmes= 0; indiceconjuntoDeFilmes < catalogo.conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++){
-            if (catalogo.conjuntoDeFilmes.at(indiceconjuntoDeFilmes) == filmeEscolhido) 
-                filmeRepetido = 1; // para encontrar se o filme escolhido ja esta contido no catalogo
-        }
+    for (unsigned int indiceconjuntoDeFilmes= 0; indiceconjuntoDeFilmes < catalogo.conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++){
+        if (catalogo.conjuntoDeFilmes.at(indiceconjuntoDeFilmes) == filmeEscolhido) 
+            filmeRepetido = 1; // para encontrar se o filme escolhido ja esta contido no catalogo
+    }
 
         // so entra nesse if se nao repetido o filme escolhido
-        if (filmeRepetido == 0) {
-            for (unsigned int indiceconjuntoDeFilmes = 0; indiceconjuntoDeFilmes < catalogo.conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++){
-                //verifica se o filme escolhido pode entrar na primeira posicao do catalogo
-                if (catalogo.conjuntoDeFilmes.at(indiceconjuntoDeFilmes) > filmeEscolhido and indiceconjuntoDeFilmes == 0) {
-                    catalogo.conjuntoDeFilmes.insert(catalogo.conjuntoDeFilmes.begin(), filmeEscolhido);
-                    break;
-                }
+    if (filmeRepetido == 0) {
+        for (unsigned int indiceconjuntoDeFilmes = 0; indiceconjuntoDeFilmes < catalogo.conjuntoDeFilmes.size(); indiceconjuntoDeFilmes++){
+            //verifica se o filme escolhido pode entrar na primeira posicao do catalogo
+            if (catalogo.conjuntoDeFilmes.at(indiceconjuntoDeFilmes) > filmeEscolhido and indiceconjuntoDeFilmes == 0) {
+                catalogo.conjuntoDeFilmes.insert(catalogo.conjuntoDeFilmes.begin(), filmeEscolhido);
+                break;
+            }
 
-                //se pode inserir no meio do filmes o novo filme
-                else if (catalogo.conjuntoDeFilmes.at(indiceconjuntoDeFilmes) > filmeEscolhido) {
-                    catalogo.conjuntoDeFilmes.insert(catalogo.conjuntoDeFilmes.begin()+indiceconjuntoDeFilmes, filmeEscolhido);
-                    break;
-                }
+            //se pode inserir no meio do filmes o novo filme
+            else if (catalogo.conjuntoDeFilmes.at(indiceconjuntoDeFilmes) > filmeEscolhido) {
+                catalogo.conjuntoDeFilmes.insert(catalogo.conjuntoDeFilmes.begin()+indiceconjuntoDeFilmes, filmeEscolhido);
+                break;
+            }
 
-                //verifica se o filme escolhido estaria na ultima posicao
-                else if (indiceconjuntoDeFilmes == catalogo.conjuntoDeFilmes.size() - 1) {
-                    catalogo.conjuntoDeFilmes.push_back(filmeEscolhido);
-                    break;
-                }
+            //verifica se o filme escolhido estaria na ultima posicao
+            else if (indiceconjuntoDeFilmes == catalogo.conjuntoDeFilmes.size() - 1) {
+                catalogo.conjuntoDeFilmes.push_back(filmeEscolhido);
+                break;
             }
         }
-        else if (filmeRepetido == 1)
-            cout << "Este filme ja esta contido no catalogo. Tente novamente. " << endl;
     }
+    else if (filmeRepetido == 1)
+        cout << "Este filme ja esta contido no catalogo. Tente novamente. " << endl;
+    
     return catalogo;
 }
 
