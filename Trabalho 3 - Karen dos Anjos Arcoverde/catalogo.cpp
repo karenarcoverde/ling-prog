@@ -32,15 +32,22 @@ bool operator>(const filme &item_filme, const double &notaDoFilme){
 }
 
 void Catalogo::ExibeFilmeBemAvaliado(){
-    filme filmeBemAvaliado;
-    filmeBemAvaliado.notaDoFilme = 0;
+    double notaDofilmeBemAvaliado = 0;
 
     for (unsigned int indice_conjunto_filmes = 0; indice_conjunto_filmes < conjuntoDeFilmes.size(); indice_conjunto_filmes++){
-        if (conjuntoDeFilmes.at(indice_conjunto_filmes) > filmeBemAvaliado.notaDoFilme) 
-            filmeBemAvaliado = conjuntoDeFilmes.at(indice_conjunto_filmes);
+        if (conjuntoDeFilmes.at(indice_conjunto_filmes) > notaDofilmeBemAvaliado) 
+            notaDofilmeBemAvaliado = conjuntoDeFilmes.at(indice_conjunto_filmes).notaDoFilme;
     }
-    cout << "O filme mais bem avaliado eh:" << endl;
-    cout << filmeBemAvaliado << endl;
+    cout << "O(s) filme(s) mais bem avaliado(s) eh(sao):" << endl;
+    for (unsigned int indice_conjunto_filmes = 0; indice_conjunto_filmes < conjuntoDeFilmes.size(); indice_conjunto_filmes++){
+        if (conjuntoDeFilmes.at(indice_conjunto_filmes).notaDoFilme == notaDofilmeBemAvaliado)
+        {
+            cout << conjuntoDeFilmes.at(indice_conjunto_filmes).nomeDoFilme << endl;
+            cout << conjuntoDeFilmes.at(indice_conjunto_filmes).nomeDaProdutora << endl;
+            cout << conjuntoDeFilmes.at(indice_conjunto_filmes).notaDoFilme << endl;
+            cout << endl;
+        }
+    }
 }
 
 void Catalogo::RenovarCatalogo(){
@@ -215,8 +222,10 @@ const Catalogo &operator+=(Catalogo &catalogo, const vector <filme> &vetorDeFilm
 
             if (filmeRepetido == 0) 
                 catalogo += vetorDeFilmes.at(indicevetorDeFilmes);
-            else 
+            else{
                 cout << "Este filme ja esta contido no catalogo. Tente novamente. " << endl;
+                break;
+            }
         }
     }
     return catalogo;

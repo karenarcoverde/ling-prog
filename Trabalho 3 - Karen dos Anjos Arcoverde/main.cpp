@@ -24,7 +24,7 @@ int main(){
    string nomeFilmeEscolhido;
    filme *ponteiroParaFilme;
    int qtdFilmes = 0;
-   //int escolher_novo_filme = 1;
+   int escolher_novo_filme = 1;
    int edicao_filme = 0;
 
    while (opcao_menu != 7)
@@ -43,28 +43,29 @@ int main(){
       {
 
       case 1:
-        getline(cin, nomeFilmeEscolhido);
-        cout << "Digite filme, produtora e nota que deseja inserir: " << endl;
-        cin >> filmeEscolhido;
-        filmesEscolhidos.push_back(filmeEscolhido);
-        qtdFilmes++;
+        while (escolher_novo_filme == 1){
+          cin.ignore();
+          cout << "Digite filme, produtora e nota que deseja inserir: " << endl;
+          cin >> filmeEscolhido;
+          filmesEscolhidos.push_back(filmeEscolhido);
+          qtdFilmes++;
 
-            //cout << "Caso queira adicionar outro filme, digite 1." << endl;
-            //cout << "Caso queira voltar para o menu, digite 0. " << endl;
-            //cin >> escolher_novo_filme;
-        
+          cout << "Caso queira adicionar outro filme, digite 1." << endl;
+          cout << "Caso queira voltar para o menu, digite 0. " << endl;
+          cin >> escolher_novo_filme;
+        }
 
         if (qtdFilmes == 1){
-          catalogo += filmeEscolhido;
-        }
+            catalogo += filmeEscolhido;
+          }
         else{
-          catalogo += filmesEscolhidos;
+            catalogo += filmesEscolhidos;
         }
         break;
 
       case 2:
-        cout << "Digite o nome do filme que seja remover:  " << endl;
-        getline (cin, nomeFilmeEscolhido);
+        cout << "Digite o nome do filme que deseja remover:  " << endl;
+        cin.ignore();
         getline (cin, nomeFilmeEscolhido);
 
         ponteiroParaFilme = catalogo(nomeFilmeEscolhido);
@@ -74,7 +75,7 @@ int main(){
 
       case 3:
         cout << "Digite o nome do filme que deseja buscar: " << endl;
-        getline(cin, nomeFilmeEscolhido);
+        cin.ignore();
         getline(cin, nomeFilmeEscolhido);
 
         ponteiroParaFilme = catalogo(nomeFilmeEscolhido);
@@ -87,7 +88,7 @@ int main(){
 
       case 4:
         cout << "Digite o nome do filme: ";
-          getline(cin, nomeFilmeEscolhido);
+          cin.ignore();
           getline(cin, nomeFilmeEscolhido);
 
           if (!catalogo(nomeFilmeEscolhido)) {
@@ -105,7 +106,7 @@ int main(){
           
             if (edicao_filme == 1) {
                 cout << "Digite a nova produtora: ";
-                getline(cin, produtoraEscolhida);
+                cin.ignore();
                 getline(cin, produtoraEscolhida);
                 catalogo(nomeFilmeEscolhido,produtoraEscolhida);
             }
