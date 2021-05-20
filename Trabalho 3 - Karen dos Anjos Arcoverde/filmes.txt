@@ -1,17 +1,19 @@
 Abril,Disney,9
 Avatar,Lighstorm Entertainment,5.7
 Cidade de Deus,Warner,9
+Crepusculo,Universal,7.7
+Crepusculo 2,Universal,6.6
 Dois Filhos de Francisco,Globo,8
 Harry,Netflix,9.8
 Lilo e Stitch,Walt Disney Pictures,9.8
 Naruto,Masashi,9.8
-Nasce uma Estrela,Warner Bros Pictures,2
-O milagre da cela 7,Netflix,9.5
+O milagre da cela 7,Netflix,8.7
 Resident Evil,Universal,7
+Seis signos da luz,Warner bros,9.9
 Sitio do Picapau,Globo,5
 Ta chovendo hamburguer,Disney,8
 Toy Story,Netflix,4
 Up altas aventuras,Disney,9.8
-Vingadores,Marvel Studios,8.5
+Vingadores,MGT,8.5
 Yamashi,A2,4
 Zathura,Warner Bros,9.5
