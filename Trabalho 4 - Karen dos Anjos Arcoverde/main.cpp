@@ -69,7 +69,6 @@ int main(){
             cout << except.what() << endl;
          }
 
-         delete paciente;
          break;
          
       case 2:

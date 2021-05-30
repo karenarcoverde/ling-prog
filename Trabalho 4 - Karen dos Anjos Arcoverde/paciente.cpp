@@ -51,26 +51,25 @@ Paciente::Paciente(const Paciente & paciente){
     this->paciente_caracteristicas = paciente.paciente_caracteristicas;
 }
 
-Paciente::Paciente(){
-    setCaracteristicas();
-}
 
 void Paciente::setCaracteristicas(){
     paciente_caracteristicas = "Sem informacoes sobre o paciente.";
 }
 
+Paciente::Paciente(){
+    setCaracteristicas();
+}
 
 void Paciente_Risco::setCaracteristicas(){
     paciente_caracteristicas = "Grau do risco = " + to_string(paciente_risco);
 }
 
-void Paciente_Numero_Consultas::setCaracteristicas(){
-    paciente_caracteristicas = "Numero de consultas = " + to_string(numero_consultas);
-}
-
-
 Paciente_Risco::Paciente_Risco(){
     setCaracteristicas();
+}
+
+void Paciente_Numero_Consultas::setCaracteristicas(){
+    paciente_caracteristicas = "Numero de consultas = " + to_string(numero_consultas);
 }
 
 Paciente_Numero_Consultas::Paciente_Numero_Consultas(){

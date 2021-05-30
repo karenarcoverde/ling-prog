@@ -33,7 +33,7 @@ class Paciente {
 };
 
 
-//usando o conceito de herança
+//usando o conceito de herança -- Pacientes derivados
 class Paciente_Numero_Consultas: public Paciente{
     public:
         Paciente_Numero_Consultas();
