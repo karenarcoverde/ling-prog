@@ -38,7 +38,7 @@ bool Paciente::operator==(const Paciente & paciente){
 }
 
 
-void Paciente::setPaciente(string nome_paciente){
+Paciente::Paciente(string nome_paciente){
     nome_do_paciente = nome_paciente;
 }
 
@@ -59,9 +59,6 @@ void Paciente::setCaracteristicas(){
     paciente_caracteristicas = "Sem informacoes sobre o paciente.";
 }
 
-double Paciente_Risco::getRisco_paciente(){
-    return paciente_risco;
-}
 
 void Paciente_Risco::setCaracteristicas(){
     paciente_caracteristicas = "Paciente em risco, grau do risco = " + to_string(paciente_risco);

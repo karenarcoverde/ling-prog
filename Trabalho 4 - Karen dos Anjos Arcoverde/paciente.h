@@ -23,7 +23,7 @@ class Paciente {
         bool operator<(const Paciente &); 
         bool operator==(const Paciente &); 
 
-        void setPaciente(string);
+        Paciente(string);
         Paciente();
         Paciente(const Paciente &);
     
@@ -32,25 +32,23 @@ class Paciente {
         string nome_do_paciente;
 };
 
+
+//usando o conceito de herança
 class Paciente_Numero_Consultas: public Paciente{
     public:
         Paciente_Numero_Consultas();
-
         void setCaracteristicas();
 
     private:
-        unsigned int numero_consultas = 1;
+        int numero_consultas = 1;
 };
 
 class Paciente_Risco: public Paciente {
     public:
-        Paciente_Risco();
-
-        double getRisco_paciente();
-        
+        Paciente_Risco();    
         void setCaracteristicas();
 
     private:
-        double paciente_risco = 1.0;    
+        int paciente_risco = 1;    
 };
 #endif
