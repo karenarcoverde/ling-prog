@@ -61,11 +61,11 @@ void Paciente::setCaracteristicas(){
 
 
 void Paciente_Risco::setCaracteristicas(){
-    paciente_caracteristicas = "Paciente em risco, grau do risco = " + to_string(paciente_risco);
+    paciente_caracteristicas = "Grau do risco = " + to_string(paciente_risco);
 }
 
 void Paciente_Numero_Consultas::setCaracteristicas(){
-    paciente_caracteristicas = "Paciente com consultas, numero de consultas = " + to_string(numero_consultas);
+    paciente_caracteristicas = "Numero de consultas = " + to_string(numero_consultas);
 }
 
 

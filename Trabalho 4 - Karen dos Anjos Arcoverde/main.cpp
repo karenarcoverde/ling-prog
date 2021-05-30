@@ -74,7 +74,9 @@ int main(){
          
       case 2:
          cout << "Nome do paciente: ";
+         cin.ignore();
          getline(cin, nome_paciente_novo);
+         
 
          try{
             cout << cadastro.ExibePaciente(nome_paciente_novo) << endl;
