@@ -14,12 +14,12 @@ class Paciente {
         string paciente_caracteristicas;
 
         virtual ~Paciente(){};
-        virtual string &getName();
+        virtual string &getNomeDoPaciente();
         virtual void setCaracteristicas();
 
-        bool operator>(Paciente const &);
-        bool operator<(Paciente const &); 
-        bool operator==(Paciente const &); 
+        bool operator>(const Paciente &);
+        bool operator<(const Paciente &); 
+        bool operator==(const Paciente &); 
 
         Paciente(string);
         Paciente();
@@ -28,18 +28,6 @@ class Paciente {
 
     private:
         string nome_do_paciente;
-};
-
-class Paciente_Caracteristicas: public Paciente {
-    public:
-        Paciente_Caracteristicas();
-
-        double getRisco_paciente();
-        
-        void setCaracteristicas();
-
-    private:
-        double paciente_risco = 1.0;    
 };
 
 class Paciente_Numero_Consultas: public Paciente{
@@ -51,3 +39,16 @@ class Paciente_Numero_Consultas: public Paciente{
     private:
         unsigned int numero_consultas = 1;
 };
+
+class Paciente_Risco: public Paciente {
+    public:
+        Paciente_Risco();
+
+        double getRisco_paciente();
+        
+        void setCaracteristicas();
+
+    private:
+        double paciente_risco = 1.0;    
+};
+
