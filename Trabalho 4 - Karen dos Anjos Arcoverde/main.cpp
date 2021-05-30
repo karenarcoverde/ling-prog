@@ -1,14 +1,10 @@
 /***************************************************************************/
 /*************************** Programa Principal ****************************/
 
-
-
 #include "cadastro.h"
 #include "paciente.h"
 
-
 using namespace std;
-
 
 /* Programa do Trabalho 4: 
    Programa de cadastro de pacientes de um hospital
@@ -19,6 +15,8 @@ int main(){
    int opcao_menu;
    Cadastro cadastro;
    string nome_paciente_novo;
+   Paciente *paciente;
+   int opcao_paciente;
 
    while (opcao_menu != 4)
    {
@@ -34,18 +32,14 @@ int main(){
       {
 
       case 1:
-         int opcao_paciente;
-         Paciente *paciente;
-
          cout << "Tipo de paciente: " << endl;
          cout << "1. Paciente " << endl;
          cout << "2. Paciente Consultas " << endl;
          cout << "3. Paciente Risco " << endl;
-      
+         cout << "4. Sair " << endl;
+         
          cin >> opcao_paciente;
-
-         cout << "Nome do paciente: " ;
-
+         cout << "Nome do paciente: " << endl;
 
          switch (opcao_paciente)
          {
@@ -57,12 +51,13 @@ int main(){
             break;
          case 3:
             paciente = new Paciente_Risco;
-            break;  
+            break;
+
+         case 4:
+            break;
 
          default:
             cout << "Operacao invalida. Escolha uma das tres opcoes." << endl;
-            return 2;
-            break;
          }
 
          cin >> *paciente;
@@ -70,25 +65,22 @@ int main(){
          try{
             cadastro.InserePaciente(*paciente);
          }
-         catch(const PacienteJaInserido & erro){
-            cout << "Paciente ja inserido. "<< endl;
-            cerr << erro.what();
+         catch(PacienteInseridoException & except){
+            cout << except.what() << endl;
          }
 
          delete paciente;
          break;
-
+         
       case 2:
          cout << "Nome do paciente: ";
-         cin >> nome_paciente_novo; 
-         cout << "Exibindo detalhes do paciente:"<< endl;
+         getline(cin, nome_paciente_novo);
 
          try{
-            cout << cadastro.ExibePaciente(nome_paciente_novo);
+            cout << cadastro.ExibePaciente(nome_paciente_novo) << endl;
          }
-         catch(const PacienteNaoEncontrado &erro){
-            cout << "Erro ao exibir paciente. "<< endl;
-            cerr << erro.what();
+         catch(PacienteNaoEncontradoException &except){
+            cout << except.what() << endl;
          }
          break;
 

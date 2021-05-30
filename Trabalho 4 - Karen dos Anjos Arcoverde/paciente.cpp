@@ -38,7 +38,7 @@ bool Paciente::operator==(const Paciente & paciente){
 }
 
 
-Paciente::Paciente(string nome_paciente){
+void Paciente::setPaciente(string nome_paciente){
     nome_do_paciente = nome_paciente;
 }
 

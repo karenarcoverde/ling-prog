@@ -23,7 +23,7 @@ class Paciente {
         bool operator<(const Paciente &); 
         bool operator==(const Paciente &); 
 
-        Paciente(string);
+        void setPaciente(string);
         Paciente();
         Paciente(const Paciente &);
     

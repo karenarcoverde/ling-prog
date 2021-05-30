@@ -3,29 +3,15 @@
 
 
 #include <string>
+#include <iostream>
+#include <stdexcept>
 
 #include "arvore.h"
 #include "paciente.h"
 
+
 using namespace std;
 
-// quando o paciente ja estiver na arvore
-class PacienteJaInserido: public exception{
-    public:
-    const char *what() const throw()
-    {
-        return "Paciente ja consta no cadastro";
-    }
-};
-
-// quando o paciente nao estiver na arvore
-class PacienteNaoEncontrado: public exception{
-    public:
-    const char *what() const throw()
-    {
-        return "Paciente nao encontrado";
-    }
-};
 
 class Cadastro{
     friend ostream &operator<<(ostream &, Cadastro &);
@@ -38,3 +24,16 @@ class Cadastro{
     private:
         Arvore <Paciente> Arvore_Pacientes;
 };
+
+// quando o paciente ja estiver na arvore
+class PacienteInseridoException : public exception {
+	public:
+		virtual const char * what () const throw (); 
+};
+
+// quando o paciente nao estiver na arvore para buscar
+class PacienteNaoEncontradoException : public exception {
+	public:
+		virtual const char * what () const throw (); 
+};
+

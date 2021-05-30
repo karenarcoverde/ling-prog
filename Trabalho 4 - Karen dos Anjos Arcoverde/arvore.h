@@ -71,11 +71,41 @@ ostream &operator<<(ostream & saida, Arvore<T> & Arvore){
     return saida;
 }
 
+
 template <typename T>
-void Arvore<T>::exibicao(ostream & saida){
-    if (InicioArvore)
-        Exibe(InicioArvore, saida);
+void Arvore<T>::Deleta(No<T> *inicio){
+    if (inicio->direita)
+        Deleta(inicio->direita);
+
+    if (inicio->esquerda)
+        Deleta(inicio->esquerda);
+
+    delete inicio;
 }
+
+
+template <typename T>
+T *Arvore<T>::operator()(const string & nome_paciente){
+    return &(Procura(InicioArvore, nome_paciente)->paciente);
+}
+
+template <typename T>
+template <typename type_data>
+
+No<T> *Arvore<T>::Procura(No<T> *inicio, const type_data &valor){
+    if (inicio == NULL)
+        return NULL;
+
+    else if (inicio->paciente == valor)
+        return inicio;
+
+    else if (inicio->paciente < valor)
+        return Procura(inicio->esquerda, valor);
+
+    else
+        return Procura(inicio->direita, valor);
+}
+
 
 template <typename T>
 void Arvore<T>::Exibe(No<T> *inicio, ostream & saida){
@@ -88,15 +118,11 @@ void Arvore<T>::Exibe(No<T> *inicio, ostream & saida){
         Exibe(inicio->esquerda, saida);
 }
 
+
 template <typename T>
-void Arvore<T>::Deleta(No<T> *inicio){
-    if (inicio->direita)
-        Deleta(inicio->direita);
-
-    if (inicio->esquerda)
-        Deleta(inicio->esquerda);
-
-    delete inicio;
+void Arvore<T>::exibicao(ostream & saida){
+    if (InicioArvore)
+        Exibe(InicioArvore, saida);
 }
 
 template <typename T>
@@ -122,27 +148,4 @@ No<T> *Arvore<T>::Insere(No<T> *inicio, const T & AdicionarNaArvore){
         else
             return Insere(inicio->direita, AdicionarNaArvore);
     }
-}
-
-
-template <typename T>
-T *Arvore<T>::operator()(const string & nome_paciente){
-    return &(Procura(InicioArvore, nome_paciente)->paciente);
-}
-
-template <typename T>
-template <typename type_data>
-
-No<T> *Arvore<T>::Procura(No<T> *inicio, const type_data &valor){
-    if (inicio == NULL)
-        return NULL;
-
-    else if (inicio->paciente == valor)
-        return inicio;
-
-    else if (inicio->paciente < valor)
-        return Procura(inicio->esquerda, valor);
-
-    else
-        return Procura(inicio->direita, valor);
 }
