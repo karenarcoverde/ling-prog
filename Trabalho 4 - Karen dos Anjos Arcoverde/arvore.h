@@ -65,8 +65,8 @@ T *Arvore<T>::operator+=(const T & AdicionarNaArvore){
 }
 
 template <typename T>
-ostream &operator<<(ostream & saida, Arvore<T> & arvore){
-    arvore.Exibe(saida);
+ostream &operator<<(ostream & saida, Arvore<T> & Arvore){
+    Arvore.exibicao(saida);
 
     return saida;
 }
@@ -127,7 +127,7 @@ No<T> *Arvore<T>::Insere(No<T> *inicio, const T & AdicionarNaArvore){
 
 template <typename T>
 T *Arvore<T>::operator()(const string & nome_paciente){
-    return &(Procura(inicio, nome_paciente)->paciente);
+    return &(Procura(InicioArvore, nome_paciente)->paciente);
 }
 
 template <typename T>

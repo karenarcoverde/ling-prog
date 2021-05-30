@@ -1,6 +1,8 @@
 /***************************************************************************/
 /*************************** paciente.h  **********************************/
 
+#ifndef paciente_h
+#define paciente_h
 #include <string>
 
 using namespace std;
@@ -51,4 +53,4 @@ class Paciente_Risco: public Paciente {
     private:
         double paciente_risco = 1.0;    
 };
-
+#endif
