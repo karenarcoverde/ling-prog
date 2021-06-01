@@ -15,7 +15,6 @@ class Paciente {
     public:
         string paciente_caracteristicas;
 
-        virtual ~Paciente(){};
         virtual string &getNomeDoPaciente();
         virtual void setCaracteristicas();
 
