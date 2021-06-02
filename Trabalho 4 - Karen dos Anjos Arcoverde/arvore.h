@@ -3,24 +3,25 @@
 
 #include <iostream>
 #include <string>
-
+#include <vector>
 #include "paciente.h"
 
-template <typename type_data>
-struct No{
-    type_data paciente;
-    No *direita;
-    No *esquerda;
-    No();
+
+
+//wrapper para t = Paciente/Paciente_Doenca/paciente_consulta 
+template <class T>
+class No{
+    T dado;
+    No<T> *esquerda;
+    No<T> *direita;
+    friend class Arvore;
 };
 
-template <typename type_data>
-No<type_data>::No() : direita(NULL), esquerda(NULL){};
-
-template <typename T>
+//t = paciente
+template <class T>
 class Arvore{
 
-    template <typename ArvoreTipo>
+    template <class unused>
     friend ostream &operator<<(ostream & saida, Arvore<T> & arvore);
 
     public:
@@ -28,30 +29,44 @@ class Arvore{
         ~Arvore();
         T *operator+=(const T &AdicionarNaArvore);
         T *operator()(const string & nome_paciente);
-        void exibicao(ostream & saida);
+        
 
     private:
-        void Exibe(No<T> *inicio, ostream & saida);           
-        void Deleta(No<T> *inicio);                           
+        //void Exibe(No<T> *inicio, ostream & saida);                                    
         No<T> *Insere(No<T> *inicio, const T &AdicionarNaArvore);       
 
-        template <typename type_data>
+        template <class type_data>
         No<T> *Procura(No<T> *inicio, const type_data &nome_paciente);
 
         No<T> *InicioArvore = NULL;
 };
 
 
-template <typename T>
+template <class T>
 Arvore<T>::Arvore(){}
 
-template <typename T>
+template <class T>
 Arvore<T>::~Arvore(){
-    if (InicioArvore != NULL)
-        Deleta(InicioArvore);
+    vector<T *> raizes;
+    No<T> * raiz=InicioArvore;
+    if (!InicioArvore)
+        return;
+
+    while (raiz){
+        if (raiz->direita)
+            raiz=raiz->direita;
+        else if (raiz->esquerda)
+            raiz = raiz->esquerda;
+        else
+            raizes.back(raiz);
+    }
+    for(auto r : raizes)
+        delete r;
+    
+        
 }
 
-template <typename T>
+template <class T>
 T *Arvore<T>::operator+=(const T & AdicionarNaArvore){
 
     if (InicioArvore == NULL){
@@ -61,36 +76,44 @@ T *Arvore<T>::operator+=(const T & AdicionarNaArvore){
         return &(InicioArvore->paciente);
     }
     else
-        return &(Insere(InicioArvore, AdicionarNaArvore)->paciente);
+        return &(Insere(InicioArvore, AdicionarNaArvore));
 }
 
-template <typename T>
-ostream &operator<<(ostream & saida, Arvore<T> & Arvore){
-    Arvore.exibicao(saida);
+template <class T>
+ostream &operator<<(ostream & saida, Arvore<T> & arvore){
+    No<T> *noPtr = arvore.InicioArvore;
 
+    while(noPtr){
+        if(noPtr->direita)
+            noPtr=noPtr->direita;
+
+        saida << noPtr->paciente << endl;
+
+        if (noPtr->esquerda)
+            noPtr=noPtr->esquerda;
+    }
     return saida;
 }
-
-
-template <typename T>
-void Arvore<T>::Deleta(No<T> *inicio){
+/*
+template <class T>
+void Arvore<T>::Exibe(No<T> *inicio, ostream & saida){
     if (inicio->direita)
-        Deleta(inicio->direita);
+        Exibe(inicio->direita, saida);
+
+    saida << inicio->paciente << endl;
 
     if (inicio->esquerda)
-        Deleta(inicio->esquerda);
-
-    delete inicio;
-}
+        Exibe(inicio->esquerda, saida);
+}*/
 
 
-template <typename T>
+template <class T>
 T *Arvore<T>::operator()(const string & nome_paciente){
     return &(Procura(InicioArvore, nome_paciente)->paciente);
 }
 
-template <typename T>
-template <typename type_data>
+template <class T>
+template <class type_data>
 
 No<T> *Arvore<T>::Procura(No<T> *inicio, const type_data &valor){
     if (inicio == NULL)
@@ -107,45 +130,28 @@ No<T> *Arvore<T>::Procura(No<T> *inicio, const type_data &valor){
 }
 
 
-template <typename T>
-void Arvore<T>::Exibe(No<T> *inicio, ostream & saida){
-    if (inicio->direita)
-        Exibe(inicio->direita, saida);
-
-    saida << inicio->paciente << endl;
-
-    if (inicio->esquerda)
-        Exibe(inicio->esquerda, saida);
-}
-
-
-template <typename T>
-void Arvore<T>::exibicao(ostream & saida){
-    if (InicioArvore)
-        Exibe(InicioArvore, saida);
-}
-
-template <typename T>
+template <class T>
 No<T> *Arvore<T>::Insere(No<T> *inicio, const T & AdicionarNaArvore){
   
-    if (inicio->paciente < AdicionarNaArvore){
-        if (inicio->esquerda == NULL){
-            inicio->esquerda = new No<T>;
-            inicio->esquerda->paciente = AdicionarNaArvore;
+    if (inicio->paciente > AdicionarNaArvore){
 
-            return inicio->esquerda;
-        }
-        else
-            return Insere(inicio->esquerda, AdicionarNaArvore);
-    }
-    else{
         if (inicio->direita == NULL){
             inicio->direita = new No<T>;
             inicio->direita->paciente = AdicionarNaArvore;
 
-            return inicio->direita;
+            return inicio->direita->paciente;
         }
         else
             return Insere(inicio->direita, AdicionarNaArvore);
+    }
+    else{
+        if (inicio->esquerda == NULL){
+            inicio->esquerda = new No<T>;
+            inicio->esquerda->paciente = AdicionarNaArvore;
+
+            return inicio->esquerda->paciente;
+        }
+        else
+            return Insere(inicio->esquerda, AdicionarNaArvore);
     }
 }
