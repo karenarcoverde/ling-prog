@@ -7,6 +7,9 @@
 
 using namespace std;
 
+void Paciente_Doenca::setTipo_Doenca (string tipo_de_doenca){
+        tipo_doenca = tipo_de_doenca;
+}
 
 istream &operator >>(istream & entrada,Paciente & paciente){
 
@@ -51,29 +54,14 @@ Paciente::Paciente(const Paciente & paciente){
     this->paciente_caracteristicas = paciente.paciente_caracteristicas;
 }
 
-
-void Paciente::setCaracteristicas(){
+Paciente::Paciente(){
     paciente_caracteristicas = "Sem informacoes sobre o paciente.";
 }
 
-Paciente::Paciente(){
-    setCaracteristicas();
-}
-
-void Paciente_Risco::setCaracteristicas(){
-    paciente_caracteristicas = "Grau do risco = " + to_string(paciente_risco);
-}
-
-Paciente_Risco::Paciente_Risco(){
-    setCaracteristicas();
-}
-
-void Paciente_Numero_Consultas::setCaracteristicas(){
-    paciente_caracteristicas = "Numero de consultas = " + to_string(numero_consultas);
+Paciente_Doenca::Paciente_Doenca(){
+    paciente_caracteristicas = "Tipo de doenca = " + tipo_doenca;
 }
 
 Paciente_Numero_Consultas::Paciente_Numero_Consultas(){
-    setCaracteristicas();
+    paciente_caracteristicas = "Numero de consultas = " + to_string(numero_consultas);
 }
-
-

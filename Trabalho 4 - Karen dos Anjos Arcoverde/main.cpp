@@ -17,6 +17,9 @@ int main(){
    string nome_paciente_novo;
    Paciente *paciente;
    int opcao_paciente;
+   string nome_paciente;
+   string nome_doenca;
+   Paciente_Doenca paciente_doenca;
 
    while (opcao_menu != 4)
    {
@@ -35,12 +38,11 @@ int main(){
          cout << "Tipo de paciente: " << endl;
          cout << "1. Paciente " << endl;
          cout << "2. Paciente Consultas " << endl;
-         cout << "3. Paciente Risco " << endl;
+         cout << "3. Paciente Doenca " << endl;
          cout << "4. Sair " << endl;
          
          cin >> opcao_paciente;
-         cout << "Nome do paciente: " << endl;
-
+        
          switch (opcao_paciente)
          {
          case 1:
@@ -50,9 +52,9 @@ int main(){
             paciente = new Paciente_Numero_Consultas;
             break;
          case 3:
-            paciente = new Paciente_Risco;
+            paciente = new Paciente_Doenca;
             break;
-
+         
          case 4:
             break;
 
@@ -60,7 +62,14 @@ int main(){
             cout << "Operacao invalida. Escolha uma das tres opcoes." << endl;
          }
 
+         cout << "Nome do paciente: " << endl;
          cin >> *paciente;
+
+
+         cout << "Digite nome da doenca: " << endl;
+         cin >> nome_doenca;
+         paciente_doenca.setTipo_Doenca (nome_doenca);
+
 
          try{
             cadastro.InserePaciente(*paciente);
