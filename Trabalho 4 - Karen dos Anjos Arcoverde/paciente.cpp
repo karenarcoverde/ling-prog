@@ -7,12 +7,6 @@
 
 using namespace std;
 
-
-void Paciente_Numero_Consultas::setNumero_Consultas (int numero_de_consultas){
-        numero_consultas = numero_de_consultas;
-        paciente_caracteristicas = "Numero de consultas = " + to_string(numero_consultas);
-}
-
 void Paciente_Doenca::setTipo_Doenca (string tipo_de_doenca){
         tipo_doenca = tipo_de_doenca;
         paciente_caracteristicas = "Tipo de doenca = " + tipo_doenca;

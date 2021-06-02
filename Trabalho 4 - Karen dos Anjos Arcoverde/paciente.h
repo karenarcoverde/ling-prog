@@ -34,7 +34,6 @@ class Paciente {
 class Paciente_Numero_Consultas: public Paciente{
     public:
         Paciente_Numero_Consultas();
-        void setNumero_Consultas (int);
     private:
         int numero_consultas = 1;
 };

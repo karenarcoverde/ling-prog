@@ -19,7 +19,6 @@ int main(){
    int opcao_paciente;
    string nome_paciente;
    string nome_doenca;
-   int qtdConsultas;
 
 
    while (opcao_menu != 4)
@@ -66,17 +65,11 @@ int main(){
          cout << "Nome do paciente: " << endl;
          cin >> *paciente;
 
-        if (opcao_paciente == 3){
-            cout << "Digite nome da doenca: " << endl;
-            getline(cin,nome_doenca);
-            static_cast<Paciente_Doenca *>(paciente)->setTipo_Doenca (nome_doenca);
-        }
 
-        if (opcao_paciente == 2){
-            cout << "Digite o numero de consultas: " << endl;
-            cin >> qtdConsultas;
-            static_cast<Paciente_Numero_Consultas *>(paciente)->setNumero_Consultas (qtdConsultas);
-        }
+         cout << "Digite nome da doenca: " << endl;
+         cin >> nome_doenca;
+         static_cast<Paciente_Doenca *>(paciente)->setTipo_Doenca (nome_doenca);
+
 
          try{
             cadastro.InserePaciente(*paciente);
