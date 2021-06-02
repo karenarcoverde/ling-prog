@@ -3,7 +3,7 @@ Este programa possui um gerenciamento de pacientes hospitalares.
 Instruções sobre o Menu:
 O usuário deverá escolher uma opção das citadas abaixo. Ele poderá escolher quantas vezes quiser as opções enquanto não for escolhida a opção 4 (Sair).
 
-1. Insere paciente -> Acrescenta um paciente no cadastro de acordo com o nome escolhido e o tipo de paciente (paciente normal, paciente número de consultas, paciente doença).
+1. Insere paciente -> Acrescenta um paciente no cadastro de acordo com o nome escolhido e o tipo de paciente (paciente normal, paciente número de consultas e paciente doença).
 Para cada tipo de paciente escolhido, digite as seguintes informações:
 =============================================================================
 Para Paciente normal: 
