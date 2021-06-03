@@ -32,6 +32,7 @@ Paciente &Cadastro::ExibePaciente(string nome_paciente){
 
 //insere o paciente na arvore
 void Cadastro::InserePaciente(Paciente paciente){
+
     if ((Arvore_Pacientes += paciente)==NULL)
         throw PacienteInseridoException(); //caso o paciente escolhido para inserir retorne NULL
 }
